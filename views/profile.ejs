@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- FA CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Title of Page -->
+    <title>Fem STEM</title>
+
+    <!-- Custom Profile page CSS -->
+    <style>
+      /* Tag skills */
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      .tags {
+          max-width: 90%;
+          width: 100%;
+          padding: 30px 40px;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          float: right;
+          display: flex;
+          -webkit-box-orient: vertical;
+          -webkit-box-direction: normal;
+          -ms-flex-direction: column;
+          flex-direction: column;
+        }
+        
+        .tags ul {
+          list-style: none;
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: flex;
+          -ms-flex-wrap: wrap;
+          flex-wrap: wrap;
+        }
+        
+        .tags ul li {
+          border-radius: 22px;
+          border: 1px solid #1a1b38;
+          box-shadow: -1px 1px 5px 0px rgba(255,255,255,0.75);
+          -webkit-box-shadow: -1px 1px 5px 0px rgba(255,255,255,0.75);
+          -moz-box-shadow: -1px 1px 5px 0px rgba(255,255,255,0.75);
+        }
+
+        .tags ul li a {
+            background-color: rgb(168, 247, 104);
+            border-radius: 20px;
+        }
+        
+        .tags ul li:first-child {
+          margin-right: 10px;
+          margin-top: 10px;
+        }
+        
+        .tags ul li + li {
+          margin-right: 10px;
+          margin-top: 10px;
+        }
+        
+        .tags ul li a {
+          display: block;
+          text-decoration: none;
+          padding: 10px 15px;
+          font-weight: bold;
+          color: black;
+        }
+    </style>
+  </head>
+
+  
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" style="background-color: #d291bc !important;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="img/logo-nobg.png" width="250" background= "white" text-indent= "-99999px" style="margin-left: 3%;">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+                <a class="nav-link" aria-current="page" href="/help">Help</a>
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/tutorials">Tutorials</a>
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/teammates">Teammates</a>
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/opportunities">Opportunities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/pride">Pride</a>
+            </li>
+
+            <li class="nav-item" style="background-color: #d291bc !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;">
+              <% if(currentUser){ %>
+                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><i class="fas fa-user-circle" style="font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #fec8d8;"></i><%= currentUser.name %></a>
+                <% } %>
+            </li>
+           
+              <% if(!currentUser){ %>
+                <li class="nav-item">
+                <a id="modal_btn" class="nav-link btn-get-quote text-white" href="#login">Login</a>
+                </li>
+              <% } else { %>
+                <li class="nav-item">
+                <a class="nav-link " href="/logout">Logout</a>
+                </li>
+              <% } %>      
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Dashboard -->
+    <div class="container top-con" style="margin-bottom: 8%;">
+      <h2>Your Profile</h2>
+      <div class="row" style="margin-top: 3%;">
+        <div class="col-xs-12 col-md-6">
+          <span style="font-weight: 600; font-size: 1.2rem;">Name:</span> 
+          <span style="margin-left: 40px;"><%=currentUser.name%></span>
+        </div>
+
+        <div class="col-xs-12 col-md-6">
+          <span style="font-weight: 600; font-size: 1.2rem;">Email address:</span> 
+          <span style="margin-left: 40px;"><%=currentUser.username%></span>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 2%;">
+          <div class="col-xs-12">
+            <% if(currentUser.discord_id){ %>
+              <span style="font-weight: 700; font-size: 1.3rem;">Discord id:</span> 
+              <span style="margin-left: 40px;"> <%=currentUser.discord_id%></span>
+            <% } %>   
+
+          </div>
+      </div>
+
+      <div class="row" style="margin-top: 2%;">
+        <div class="col-xs-12">
+          <% if(currentUser.is_mentor == 1){ %>
+            <span style="font-weight: 700; font-size: 1.3rem;">Current Status:</span>
+            <span style="margin-left: 40px;"> Mentor</span>
+          <% } else { %>
+            <span style="font-weight: 700; font-size: 1.3rem;">Current Status:</span>
+            <span style="margin-left: 40px;"> Mentee</span>
+          <% } %> 
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 2%;">
+        <div class="col-xs-12 tags" style="padding-left: 9px;">
+          <% if(currentUser.skills.length > 0){ %>
+            <span style="font-weight: 700; font-size: 1.3rem;">Skills:</span>
+            <ul style="padding-left: 0;"> 
+              <% currentUser.skills.forEach(function(skill){%>
+                <li>
+                    <a>
+                      <%= skill %>     
+                    </a>
+                </li>    
+                <%}) %>     
+            </ul>
+  
+          <% } %> 
+          
+          <!-- Skills tags -->
+       
+            
+        </div>
+      </div>
+    </div>
+
+    
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-left">
+            <p>
+              <img src="img/favicon.png" style="width: 65px;">  <span style="color: #573f70; font-weight: 600;">Made with <i class="fas fa-heart"></i> by FemSTEM</span>
+            </p>        
+          </div>
+          <div class="col-md-3 offset-md-1 footer-right">
+            <a href="https://github.com/Swatilekha-Roy/Fem-STEM"><i class="fab fa-github"></i></a>
+						<a href="mailto:swatilekha.roy4@gmail.com"><i class="fa fa-envelope"></i></a>
+            <a href="https://discord.gg/CBteqBHz3b"><i class="fab fa-discord"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+      
+      <!-- Scroll to top arrow -->
+      <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 30px;"></i></a>
+  
+      <!-- JQuery JS -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
+  
+      <!-- Socket.io scripts -->
+      <script src="/socket.io/socket.io.js"></script>
+      
+      <!-- Custom scripts -->
+      <script type="text/javascript" src="js/scripts.js"></script>
+      <script type="text/javascript" src="js/wow.min.js"></script>
+  
+      <!-- Bootstrap JS -->
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
+
+      <!-- Userway -->
+    <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "E9TGLGySQm");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
+
+  
+      <!-- WOW script -->
+      <script type="text/javascript">
+        new WOW().init();
+      </script>
+  
+    </body>
+  </html>

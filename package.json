@@ -1,0 +1,35 @@
+{
+    "name": "fem-stem",
+    "version": "1.0.0",
+    "description": "An app for helping women hackers and developers feel more empowered in this male dominated tech area.",
+    "main": "app.js",
+    "engines": {
+        "node": "12.11.1"
+    },
+    "scripts": {
+        "start": "node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon npm app.js -e js,ejs"
+    },
+    "author": "Swatilekha Roy",
+    "license": "MIT",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.19.0",
+        "dotenv": "^10.0.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "heroku": "^7.54.0",
+        "method-override": "^3.0.0",
+        "moment": "^2.29.1",
+        "mongodb": "^3.6.9",
+        "mongoose": "^5.12.12",
+        "nodemon": "^2.0.7",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
+        "passport-local-mongoose": "^6.1.0",
+        "request": "^2.88.2"
+    },
+    "devDependencies": {}
+}

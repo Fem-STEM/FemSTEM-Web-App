@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <!-- FA CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+
+    <!-- font-awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/modal_form.css" />
+    <link rel="stylesheet" href="css/toast.css" />
+
+    <!-- Title of Page -->
+    <title>FemSTEM</title>
+  </head>
+
+  <body>
+    <%- include('modal_form') %> <%- include('toast') %>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-md navbar-light fixed-top"
+      style="background-color: #d291bc !important"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="img/logo-nobg.png"
+            width="250"
+            background="white"
+            text-indent="-99999px"
+            style="margin-left: 3%"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item nav-item-active">
+              <a class="nav-link nav-link-active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/help">Help</a>
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/tutorials"
+                >Tutorials</a
+              >
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/teammates"
+                >Teammates</a
+              >
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/opportunities"
+                >Opportunities</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/pride">Pride</a>
+            </li>
+
+            <li
+              class="nav-item"
+              style="
+                background-color: #d291bc !important;
+                margin-bottom: 0 !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+              "
+            >
+              <% if(currentUser){ %>
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="/profile"
+                style="
+                  margin-top: 0 !important;
+                  margin-bottom: 0 !important;
+                  padding-top: 0 !important;
+                  padding-bottom: 0 !important;
+                "
+                ><i
+                  class="fas fa-user-circle"
+                  style="
+                    font-size: 36px;
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    padding-top: 0 !important;
+                    padding-bottom: 0 !important;
+                    color: #ffdfd3;
+                  "
+                ></i
+                ><%= currentUser.name %></a
+              >
+              <% } %>
+            </li>
+
+            <% if(!currentUser){ %>
+            <li class="nav-item">
+              <a
+                id="modal_btn"
+                class="nav-link btn-get-quote text-white"
+                href="#login"
+                >Login</a
+              >
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <%- include('partials/header-main') %>
+
+    <section
+      id="about"
+      class="about top-con"
+      style="background-color: white; padding-top: 20vh; padding-bottom: 20vh"
+    >
+      <div class="container" data-aos="fade-up">
+        <div class="section-title">
+          <!-- <h2>About</h2> -->
+          <p style="font-size: larger; font-weight: 800; color: purple">
+            “I never dreamed about success. I worked for it.” - Estee Lauder
+          </p>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 col-lg-6">
+            <div class="fadeInRightBig float-left">
+              <p style="font-size: x-large">FemSTEM</p>
+              <p class="font-italic">
+                Welcome to FemSTEM, it is a supportive, inclusive, beginner
+                friendly and women and non-binary focused online platform for
+                all your STEM needs!
+              </p>
+              <p style="color: rgb(16, 114, 179)">
+                <b
+                  ><i>
+                    Do you feel unheard and wildly outnumbered in this mostly
+                    male dominated tech field, especially during the weekend
+                    hackathons to which you look forward to so much?
+                  </i></b
+                >
+              </p>
+
+              <p>We hear you and we add to your numberes, here at FemSTEM.</p>
+
+              <p style="color: purple">
+                It's our responsibility to maintain positivity to our utmost,
+                while you are here with us. Therefore, we also kindly request
+                you to not make the person opposite to you uncomfortable by
+                profanities, harassment, belittlement and the like. May the code
+                be with you!
+              </p>
+              <p>
+                Sincerely,<br />
+                FemSTEM
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 mx-auto how-box wow fadeInRightBig">
+            <div>
+              <img
+                src="https://image.freepik.com/free-vector/you-can-change-world-girl-card_106033-120.jpg"
+                class="img-fluid"
+                height="200px"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What we offer -->
+    <div class="container wow fadeInUp" style="margin-top: 10%">
+      <div class="row">
+        <h6 style="font-size: 22px; font-weight: 600">
+          At FemSTEM, apart from endless support and fem-friendly vibes, you can
+          expect:
+        </h6>
+        <ul class="ul-offer">
+          <li>
+            <strong>Female </strong> mentorship for hackers with doubts through
+            an online community on different topics after you log in.
+          </li>
+          <li><strong>Women</strong> made tech Youtube tutorials.</li>
+          <li>
+            Teammates that you can hack with! (Again, read,
+            <strong>femmes and non-binaries</strong>) after you log in.
+          </li>
+          <li>
+            A section featuring only <strong>women</strong> and non-binary
+            focused hackathons, scholarships or other tech opportunities.
+          </li>
+          <li>
+            Inspiring Women techie quotes and an opportunity to submit your own
+            unique <strong>minority hacker</strong> story!
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Donations -->
+    <div
+      class="services-container section-container"
+      id="donate"
+      style="margin-top: 5%"
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col services section-description wow fadeIn">
+            <h2 style="font-weight: 600">Donate Here!</h2>
+            <div class="divider-1 wow fadeInUp"><span></span></div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 services-box wow fadeInUp">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="services-box-icon">
+                  <img
+                    class="services-box-icon"
+                    src="https://upload.wikimedia.org/wikipedia/commons/9/9b/GirlsInTechLogo.png"
+                    alt="Bologna"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <h3>Girls in Tech</h3>
+                <p>
+                  Join us in supporting Girls in Tech by helping women all over
+                  the world discover inspiring programs and a diverse community
+                  as they enter into a career in tech...
+                </p>
+                <br />
+                <a
+                  href="https://girlsintech.org/donate/"
+                  class="btn btn-light btn-sm"
+                  ><button class="btn btn-primary">Donate</button></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 services-box wow fadeInDown">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="services-box-icon">
+                  <img
+                    class="services-box-icon"
+                    src="https://media-exp1.licdn.com/dms/image/C560BAQEFau37AecrFw/company-logo_200_200/0/1519880971550?e=2159024400&v=beta&t=0h8FZ1Ki_WRsMr867YeOk_vlsprhvoiasZ244vTGfME"
+                    alt="Bologna"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <h3>code < to > (inspire)</h3>
+                <p>
+                  Code to Inspire (CTI) uses technology education and outreach
+                  to provide Afghan women with leverage in their fight for
+                  social, political, and economic equality...
+                </p>
+                <br />
+                <a
+                  href="https://www.codetoinspire.org/"
+                  class="btn btn-light btn-sm"
+                  ><button class="btn btn-primary">Donate</button></a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 services-box wow fadeInDown">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="services-box-icon">
+                  <img
+                    class="services-box-icon"
+                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4bVfBbS7J3cAc3ITlQKviWVGR4QV9UCaPgg&usqp=CAU"
+                    alt="Bologna"
+                  />
+                </div>
+              </div>
+              <div class="col-md-8">
+                <h3>girls who code</h3>
+                <p>
+                  We created free lesson plans featuring women in tech for
+                  teachers to use wherever they fit into the school day—from
+                  math to history to computer science...
+                </p>
+                <br />
+                <a
+                  href="https://www.classy.org/give/77372/#!/donation/checkout"
+                  class="btn btn-light btn-sm"
+                  ><button class="btn btn-primary">Donate</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-left">
+            <p>
+              <img src="img/favicon.png" style="width: 65px" />
+              <span style="color: #573f70; font-weight: 600"
+                >Made with <i class="fas fa-heart"></i> by FemSTEM</span
+              >
+            </p>
+          </div>
+          <div class="col-md-3 offset-md-1 footer-right">
+            <a href="https://github.com/Swatilekha-Roy/Fem-STEM"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="mailto:swatilekha.roy4@gmail.com"
+              ><i class="fa fa-envelope"></i
+            ></a>
+            <a href="https://discord.gg/CBteqBHz3b"
+              ><i class="fab fa-discord"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top arrow -->
+    <a href="javascript:" id="return-to-top"
+      ><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 30px"></i
+    ></a>
+    <!-- javascript: will actually do nothing. -->
+
+    <!-- JQuery JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+
+    <!-- Userway -->
+    <script>
+      (function (d) {
+        var s = d.createElement("script");
+        s.setAttribute("data-account", "E9TGLGySQm");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+      })(document);
+    </script>
+    <noscript
+      >Please ensure Javascript is enabled for purposes of
+      <a href="https://userway.org">website accessibility</a></noscript
+    >
+
+    <!-- WOW animations -->
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+  </body>
+</html>

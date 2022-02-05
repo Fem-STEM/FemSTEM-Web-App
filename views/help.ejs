@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <!-- FA CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+      rel="stylesheet"
+    />
+
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/modal_form.css" />
+    <link rel="stylesheet" href="css/toast.css" />
+
+    <style>
+      #addgroup {
+        display: none;
+      }
+
+      .heads {
+        text-align: center;
+        width: 100%;
+        height: auto;
+        background-size: cover;
+        background-attachment: fixed;
+        position: relative;
+        overflow: hidden;
+        border-radius: -1 0 85% 85% / 92%;
+      }
+
+      .overlay {
+        width: 100%;
+        height: 80%;
+        color: #fff;
+        text-shadow: 1px 1px 1px black;
+        background-image: linear-gradient(
+            to right,
+            rgba(66, 65, 65, 0.73),
+            rgba(163, 163, 163, 0.73)
+          ),
+          url("img/mentor_bg.jpg");
+        background-position: 50% 60%;
+      }
+    </style>
+
+    <script type="text/javascript">
+      /* add group button */
+      $(document).ready(function () {
+        $("#addbtn").click(function () {
+          $("#addgroup").slideToggle("slow");
+        });
+      });
+    </script>
+
+    <!-- Title of Page -->
+    <title>FemSTEM</title>
+  </head>
+
+  <body>
+    <%- include('modal_form') %> <%- include('toast') %>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-md navbar-light fixed-top"
+      style="background-color: #d291bc !important"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="img/logo-nobg.png"
+            width="250"
+            background="white"
+            text-indent="-99999px"
+            style="margin-left: 3%"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item nav-item-active">
+              <% if(currentUser){ %>
+              <a class="nav-link nav-link-active" aria-current="page" href="#"
+                >Help</a
+              >
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/tutorials"
+                >Tutorials</a
+              >
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/teammates"
+                >Teammates</a
+              >
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/opportunities"
+                >Opportunities</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/pride">Pride</a>
+            </li>
+
+            <li
+              class="nav-item"
+              style="
+                background-color: #d291bc !important;
+                margin-bottom: 0 !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+              "
+            >
+              <% if(currentUser){ %>
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="/profile"
+                style="
+                  margin-top: 0 !important;
+                  margin-bottom: 0 !important;
+                  padding-top: 0 !important;
+                  padding-bottom: 0 !important;
+                "
+                ><i
+                  class="fas fa-user-circle"
+                  style="
+                    font-size: 36px;
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    padding-top: 0 !important;
+                    padding-bottom: 0 !important;
+                    color: #ffdfd3;
+                  "
+                ></i
+                ><%= currentUser.name %></a
+              >
+              <% } %>
+            </li>
+
+            <% if(!currentUser){ %>
+            <li class="nav-item">
+              <a
+                id="modal_btn"
+                class="nav-link btn-get-quote text-white"
+                href="#login"
+                >Login</a
+              >
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div
+      class="heads overlay"
+      style="
+        background-color: rgb(243, 243, 243);
+        padding: 10px;
+        margin-top: 100px;
+        margin-bottom: -70px;
+      "
+    >
+      <h2
+        style="
+          padding: 80px;
+          font-family: 'Sarina', cursive;
+          color: rgb(185, 251, 253);
+        "
+      >
+        Ready to get your doubts cleared?
+      </h2>
+      <p
+        style="
+          font-size: 25px;
+          margin-top: -71px;
+          text-align: center;
+          font-family: 'Sarina', cursive;
+          margin-bottom: 5%;
+        "
+      >
+        Join our mentor groups and ask away! If you're a mentor who is here to
+        help take the women techie community forward, make sure to add your own
+        group and help other mentees.
+      </p>
+    </div>
+
+    <div
+      class="row search-j"
+      style="margin-left: 5%; margin-top: 20vh; color: #c8f57c"
+    >
+      <!-- Search functionality, not yet functional -->
+      <div class="col-lg-8">
+        <form class="form-inline my-2 my-lg-0" style="margin-top: 10%">
+          <div class="form-group">
+            <input
+              class="form-control input-inline"
+              id="searchTxthelp"
+              type="text"
+              style="width: 300px; display: inline-block"
+              placeholder="Search for groups..."
+              type="search"
+            />
+            <button class="btn btn-small my-2 my-sm-0" style="margin-left: 1%">
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Add Group functionality -->
+      <% if(currentUser.is_mentor == 1){ %>
+      <div class="col-lg-3" style="margin-top: 4%; margin-right: 1%">
+        <button class="btn btn-small my-2 my-sm-0" id="addbtn">
+          Add a Group to Start Discussing! +
+        </button>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- Group form Section -->
+    <div class="container my-3">
+      <div
+        class="card wow fadeInUp"
+        id="addgroup"
+        style="
+          width: 100%;
+          background-color: #ffdec3;
+          border-radius: 15px;
+          border: double 2px rgb(136, 56, 123);
+          box-shadow: 7px 10px 19px -8px rgba(108, 15, 102, 0.66);
+          -webkit-box-shadow: 7px 10px 19px -8px rgba(108, 15, 102, 0.66);
+          -moz-box-shadow: 7px 10px 19px -8px rgba(108, 15, 102, 0.66);
+        "
+      >
+        <div class="card-body">
+          <form
+            class="sweet-form"
+            action="/help"
+            method="post"
+            style="
+              margin-left: 5vw;
+              margin-right: 5vw;
+              padding: 2% 1%;
+              margin-bottom: 3%;
+            "
+          >
+            <div class="form-group">
+              <label>Group Title</label>
+              <input
+                class="form-control"
+                type="text"
+                name="Title"
+                placeholder="Everything cryptocurrency"
+                required
+              /><br />
+              <label>Brief Description</label>
+              <textarea
+                class="form-control"
+                name="Description"
+                rows="2"
+                cols="70"
+                placeholder="What will you discuss in the group? What kind of doubts could you solve best?"
+                required
+              ></textarea
+              ><br />
+              <label
+                >Group cover image Link (Approx. suggested dimensions: 700 x 300
+                px)</label
+              >
+              <input
+                class="form-control"
+                type="url"
+                value="https://dl.dropboxusercontent.com/s/gq2thi21kvkqg4b/FemSTEM.png?dl=0"
+                onfocus="if (this.value=='https://dl.dropboxusercontent.com/s/gq2thi21kvkqg4b/FemSTEM.png?dl=0') this.value='';"
+                name="Link"
+              /><br />
+            </div>
+            <button
+              class="btn btn-primary"
+              type="submit"
+              name="button"
+              style="background: #f3a8b5; float: right"
+            >
+              Create!
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <br />
+      <hr />
+
+      <h3 style="margin-top: 5%; margin-bottom: 4%">Existing Mentor groups</h3>
+
+      <div id="notes" class="container">
+        <div class="row container-fluid">
+          <% groups.forEach(function(group){ %>
+          <div
+            class="col-md-5 wow fadeInLeft"
+            id="noteCard"
+            style="
+              margin-right: 4%;
+              margin-left: 4%;
+              margin-top: 2%;
+              padding: 13px;
+              border-radius: 8px;
+              background-color: #f7e6ca;
+              box-shadow: 7px 10px 19px -8px #a7462a;
+              -webkit-box-shadow: 7px 10px 19px -8px #a7462a;
+              -moz-box-shadow: 7px 10px 19px -8px #a7462a;
+            "
+          >
+            <img
+              src="<%= group.link %>"
+              width="100%"
+              style="margin-bottom: 5%"
+            />
+            <h5 class="" style="font-weight: 800"><%=group.title%> : &nbsp;</h5>
+            <p style="line-height: 30px"><%=group.description%></p>
+            <a href="/help/<%=group._id%>"
+              ><button
+                class="btn btn-primary"
+                style="border: dashed 1px; float: left"
+              >
+                Enter group
+              </button></a
+            >
+          </div>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discord link -->
+    <div class="container" style="margin-top: 6%">
+      <div class="row">
+        <h3 style="text-align: justify; color: rgb(73, 69, 69)">
+          For more interactions and mentor help, you can also head over to
+          <a href="https://discord.gg/CBteqBHz3b"
+            >our official Discord server.</a
+          >
+        </h3>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-left">
+            <p>
+              <img src="img/favicon.png" style="width: 65px" />
+              <span style="color: #573f70; font-weight: 600"
+                >Made with <i class="fas fa-heart"></i> by FemSTEM</span
+              >
+            </p>
+          </div>
+          <div class="col-md-3 offset-md-1 footer-right">
+            <a href="https://github.com/Swatilekha-Roy/Fem-STEM"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="mailto:swatilekha.roy4@gmail.com"
+              ><i class="fa fa-envelope"></i
+            ></a>
+            <a href="https://discord.gg/CBteqBHz3b"
+              ><i class="fab fa-discord"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top arrow -->
+    <a href="javascript:" id="return-to-top"
+      ><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 30px"></i
+    ></a>
+
+    <!-- JQuery JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+    <!-- <script type="text/javascript" src="js/journal.js"></script> -->
+
+    <!-- Userway -->
+    <script>
+      (function (d) {
+        var s = d.createElement("script");
+        s.setAttribute("data-account", "E9TGLGySQm");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+      })(document);
+    </script>
+    <noscript
+      >Please ensure Javascript is enabled for purposes of
+      <a href="https://userway.org">website accessibility</a></noscript
+    >
+
+    <!-- WOW animations -->
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <!-- FA CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="../img/favicon.png" type="image/png" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/animate.css" />
+    <link rel="stylesheet" href="../css/modal_form.css" />
+    <link rel="stylesheet" href="../css/toast.css" />
+    <link rel="stylesheet" href="../css/grouppage.css" />
+
+    <style>
+      #wrapper {
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      header {
+        height: 350px;
+        margin-top: 70px;
+        width: 100%;
+        overflow: hidden;
+        background: white url("<%= group.link %>") no-repeat center center;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        opacity: 0.8;
+        line-height: 2.8em;
+      }
+
+      h1 {
+        margin-top: 1em;
+        font-family: Arial, San-serif;
+        font-size: 70px;
+        text-align: center;
+        color: limegreen;
+        width: 100%;
+      }
+    </style>
+
+    <!-- Title of Page -->
+    <title>FemSTEM</title>
+  </head>
+
+  <body>
+    <%- include('modal_form') %> <%- include('toast') %>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-md navbar-light fixed-top"
+      style="background-color: #d291bc !important"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="../img/logo-nobg.png"
+            width="250"
+            background="white"
+            text-indent="-99999px"
+            style="margin-left: 3%"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item nav-item-active">
+              <% if(currentUser){ %>
+              <a
+                class="nav-link nav-link-active"
+                aria-current="page"
+                href="/help"
+                >Help</a
+              >
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/tutorials"
+                >Tutorials</a
+              >
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/teammates"
+                >Teammates</a
+              >
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/opportunities"
+                >Opportunities</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">Pride</a>
+            </li>
+
+            <li
+              class="nav-item"
+              style="
+                background-color: #d291bc !important;
+                margin-bottom: 0 !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+              "
+            >
+              <% if(currentUser){ %>
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="/profile"
+                style="
+                  margin-top: 0 !important;
+                  margin-bottom: 0 !important;
+                  padding-top: 0 !important;
+                  padding-bottom: 0 !important;
+                "
+                ><i
+                  class="fas fa-user-circle"
+                  style="
+                    font-size: 36px;
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    padding-top: 0 !important;
+                    padding-bottom: 0 !important;
+                    color: #ffdfd3;
+                  "
+                ></i
+                ><%= currentUser.name %></a
+              >
+              <% } %>
+            </li>
+
+            <% if(!currentUser){ %>
+            <li class="nav-item">
+              <a
+                id="modal_btn"
+                class="nav-link btn-get-quote text-white"
+                href="#login"
+                >Login</a
+              >
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="wrapper">
+      <header></header>
+    </div>
+
+    <!-- Comment section -->
+    <div class="comment-container container theme--light">
+      <div class="row">
+        <h2 style="margin-top: 6%; color: #619196; font-size: 43px">
+          <%= group.title %>, created by <%= group.created_by %>
+        </h2>
+        <p style="color: #8484c8; font-size: 18px">
+          <%= group.description %> Clear all your doubts by posting your topic
+          relevant questions in this group and wait for the mentor or others on
+          the thread to help you.
+        </p>
+      </div>
+
+      <!-- Skills tags -->
+      <div class="tags">
+        <ul>
+          <%group.skills.forEach(function(skill){%>
+          <li>
+            <a> <%= skill %> </a>
+          </li>
+          <%}) %>
+        </ul>
+      </div>
+
+      <!-- All comments shown -->
+      <div class="comments">
+        <div class="card v-card v-sheet theme--light elevation-2">
+          <div class="header">
+            <div class="v-avatar avatar" style="height: 50px; width: 50px">
+              <img src="../img/mentor.jpg" />
+            </div>
+            <span class="displayName caption"
+              >Feel free to ask me any and all your doubts. Also, I am open to a
+              one on one Discord voice call too, on the Fem STEM server!</span
+            >
+          </div>
+        </div>
+
+        <% group.comments.forEach(function(comment){%>
+        <div class="card v-card v-sheet theme--light elevation-2">
+          <div class="header">
+            <div class="v-avatar avatar" style="height: 50px; width: 50px">
+              <% if(comment.author.mentor_status == 1){ %>
+              <img src="../img/mentor.jpg" />
+              <% } else { %>
+              <img src="../img/mentee.jpg" />
+              <% } %>
+            </div>
+            <span class="displayName title">
+              <%=comment.author.username%>
+            </span>
+            <% if(comment.author.mentor_status == 1){ %>
+            <span class="displayName caption">Mentor</span>
+            <% } else { %>
+            <span class="displayName caption">Mentee</span>
+            <% } %>
+          </div>
+
+          <div class="wrapper comment">
+            <p style="color: #000 !important; font-size: 14px">
+              <%=comment.text%>
+            </p>
+            <!-- 
+                  Adding answered status to answers, a WIP
+                  <form method="post" action="/help/<%= group._id %>" class="sweet-form">
+                  <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="Answerstat" style="display: none;" value="av" />
+                  <button type="submit" class="btn btn-primary" name="Answerstat">Mark answered</button>
+                </form>
+
+                <% if(comment.is_answered == 1){ %>
+                  <span  class="displayName caption">success</span>
+                <% } else { %>
+                  <span  class="displayName caption">not</span>
+                <% } %>  -->
+
+            <!-- <p>success</p> -->
+          </div>
+        </div>
+        <%});%>
+      </div>
+    </div>
+
+    <!-- Comment input box -->
+    <div class="container" style="margin-top: 3%; float: right">
+      <div class="row" style="float: right !important">
+        <div class="col-8" style="float: right !important">
+          <form
+            class="sweet-form"
+            action="/help/<%= group._id %>"
+            method="post"
+          >
+            <div class="form-group">
+              <textarea
+                name="text"
+                type="text"
+                rows="5"
+                cols="70"
+                placeholder="Answer the doubts in this thread..."
+                required
+              ></textarea
+              ><br />
+              <br /><br /><br />
+            </div>
+            <br />
+
+            <div class="col-xs-4 col-md-6" style="float: right">
+              <button
+                class="btn btn-primary btn-ans"
+                type="submit"
+                name="button"
+                style="float: right; margin-top: 9%"
+              >
+                Answer!
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Discord link -->
+    <div
+      class="container"
+      style="margin-top: 6%; display: block !important; width: 100%"
+    >
+      <div class="row">
+        <div class="col-12">
+          <h3 style="text-align: justify; color: rgb(73, 69, 69)">
+            <a href="https://discord.gg/CBteqBHz3b"
+              >Our official Discord server.</a
+            >
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+      style="
+        min-width: 100% !important;
+        position: relative;
+        left: 0 !important;
+        bottom: 0 !important;
+        right: 0 !important;
+      "
+    >
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-left">
+            <p>
+              <img src="../img/favicon.png" style="width: 65px" />
+              <span style="color: #573f70; font-weight: 600"
+                >Made with <i class="fas fa-heart"></i> by FemSTEM</span
+              >
+            </p>
+          </div>
+          <div class="col-md-3 offset-md-1 footer-right">
+            <a href="https://github.com/Swatilekha-Roy/Fem-STEM"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="mailto:swatilekha.roy4@gmail.com"
+              ><i class="fa fa-envelope"></i
+            ></a>
+            <a href="https://discord.gg/CBteqBHz3b"
+              ><i class="fab fa-discord"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top arrow -->
+    <a href="javascript:" id="return-to-top"
+      ><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 30px"></i
+    ></a>
+
+    <!-- JQuery JS -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+      integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="../js/modal.js"></script>
+    <script type="text/javascript" src="../js/scripts.js"></script>
+    <script type="text/javascript" src="../js/wow.min.js"></script>
+
+    <!-- Userway -->
+    <script>
+      (function (d) {
+        var s = d.createElement("script");
+        s.setAttribute("data-account", "E9TGLGySQm");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+      })(document);
+    </script>
+    <noscript
+      >Please ensure Javascript is enabled for purposes of
+      <a href="https://userway.org">website accessibility</a></noscript
+    >
+
+    <!-- WOW animations -->
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+  </body>
+</html>

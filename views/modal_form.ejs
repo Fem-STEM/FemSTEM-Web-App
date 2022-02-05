@@ -1,0 +1,568 @@
+<body>
+  <div class="html-container">
+    <div id="modal" class="modal-container" style="z-index: 10000 !important">
+      <div class="form-box">
+        <div class="close-btn"><i class="far fa-times-circle"></i></div>
+        <div class="button-wrapper" id="_btn">
+          <div id="btn"></div>
+          <button
+            type="button"
+            class="toggle-btn active-modal"
+            id="loginchange"
+            onclick="login()"
+          >
+            Login
+          </button>
+          <button
+            type="button"
+            class="toggle-btn"
+            id="change"
+            onclick="signup()"
+          >
+            Signup
+          </button>
+        </div>
+
+        <form id="login" action="/login" method="POST" class="input-container">
+          <input
+            id="log_username"
+            type="text"
+            class="input-field"
+            name="username"
+            placeholder="Email ID"
+            style="padding-left: 10px; color: rgb(24, 23, 23) !important"
+            required
+          />
+          <input
+            id="log_password"
+            type="password"
+            class="input-field"
+            name="password"
+            placeholder="Password"
+            style="padding-left: 10px; color: rgb(24, 23, 23) !important"
+            required
+          />
+
+          <button
+            type="submit"
+            class="submit-btn"
+            method="POST"
+            style="margin-top: 10%"
+          >
+            Login
+          </button>
+        </form>
+
+        <form
+          id="signup"
+          action="/register"
+          method="POST"
+          class="input-container"
+          style="margin-top: -60px"
+        >
+          <label for="user_type" style="color: black">Register as </label>
+          <select
+            class="browser-default custom-select"
+            id="user_type"
+            form="signup"
+            name="mentor"
+            style="margin-left: 10% !important"
+          >
+            <option value="1">Mentor</option>
+            <option value="0">Mentee</option>
+          </select>
+          <input
+            type="text"
+            name="name"
+            id="name_id"
+            class="input-field"
+            placeholder="Full Name"
+            style="padding-left: 10px; color: rgb(24, 23, 23) !important"
+            required
+          />
+          <input
+            id="username"
+            name="username"
+            type="email"
+            class="input-field"
+            placeholder="Email ID"
+            style="padding-left: 10px; color: rgb(24, 23, 23) !important"
+            required
+          />
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="input-field"
+            placeholder="Password"
+            style="padding-left: 10px; color: rgb(24, 23, 23) !important"
+            required
+          />
+
+          <div
+            class="dropdown"
+            data-control="checkbox-dropdown"
+            style="margin-top: 15px; margin-bottom: 6px"
+          >
+            <h6>Select all your relevant skills</h6>
+            <label
+              class="dropdown-label"
+              style="margin-top: 1%; border-radius: 15px"
+              name="skills"
+              >Select</label
+            >
+
+            <div class="dropdown-list" style="border-radius: 15px">
+              <a
+                href="#"
+                data-toggle="check-all"
+                class="dropdown-option"
+                style="
+                  color: rgb(68, 23, 64);
+                  text-decoration: none;
+                  font-weight: 700;
+                "
+              >
+                Check All
+              </a>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox1"
+              >
+                <input
+                  class="form-check-input checkbox"
+                  type="checkbox"
+                  id="inlineCheckbox1"
+                  name="skills"
+                  value="uiux"
+                />
+                UI-UX
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox2"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox2"
+                  name="skills"
+                  value="graphicdes"
+                />
+                Graphic Designing
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox3"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox3"
+                  name="skills"
+                  value="fedev"
+                />
+                Front-end Development
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox4"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox4"
+                  name="skills"
+                  value="bedev"
+                />
+                Back-end Development
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox5"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox5"
+                  name="skills"
+                  value="db"
+                />
+                Databases
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox6"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox6"
+                  name="skills"
+                  value="modev"
+                />
+                Mobile Development
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox7"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox7"
+                  name="skills"
+                  value="ml"
+                />
+                Machine Learning
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox8"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox8"
+                  name="skills"
+                  value="av"
+                />
+                AR-VR
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox9"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox9"
+                  name="skills"
+                  value="gd"
+                />
+                Game Development
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox10"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox10"
+                  name="skills"
+                  value="fs"
+                />
+                Full-stack Development
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox11"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox11"
+                  name="skills"
+                  value="fl"
+                />
+                Flutter
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox12"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox12"
+                  name="skills"
+                  value="dsa"
+                />
+                Data Structures & Algorithms
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox22"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox22"
+                  name="skills"
+                  value="ds"
+                />
+                Data Science
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox13"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox13"
+                  name="skills"
+                  value="clang"
+                />
+                C++
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox14"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox14"
+                  name="skills"
+                  value="java"
+                />
+                Java
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox23"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox23"
+                  name="skills"
+                  value="php"
+                />
+                PHP
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox15"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox15"
+                  name="skills"
+                  value="js"
+                />
+                Javascript
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox16"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox16"
+                  name="skills"
+                  value="htm"
+                />
+                HTML 5, CSS 3
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox17"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox17"
+                  name="skills"
+                  value="mon"
+                />
+                Mongo/ Cockroach/ Cassandra
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox18"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox18"
+                  name="skills"
+                  value="nod"
+                />
+                Node.js
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox19"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox19"
+                  name="skills"
+                  value="py"
+                />
+                Python
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox20"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox20"
+                  name="skills"
+                  value="rea"
+                />
+                React, React Native
+              </label>
+
+              <label
+                class="form-check-label dropdown-option"
+                for="inlineCheckbox21"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="inlineCheckbox21"
+                  name="skills"
+                  value="ang"
+                />
+                Angular
+              </label>
+            </div>
+          </div>
+
+          <input
+            type="text"
+            name="disid"
+            id="dis_id"
+            class="input-field"
+            placeholder="Discord id (like codediva#4567)"
+            style="padding-left: 10px; color: rgb(24, 23, 23) !important"
+          />
+
+          <button
+            type="submit"
+            class="submit-btn"
+            style="margin-top: 10%; margin-bottom: 10%"
+          >
+            Signup
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  <script type="text/javascript">
+    (function ($) {
+      var CheckboxDropdown = function (el) {
+        var _this = this;
+        this.isOpen = false;
+        this.areAllChecked = false;
+        this.$el = $(el);
+        this.$label = this.$el.find(".dropdown-label");
+        this.$checkAll = this.$el.find('[data-toggle="check-all"]').first();
+        this.$inputs = this.$el.find('[type="checkbox"]');
+
+        this.onCheckBox();
+
+        this.$label.on("click", function (e) {
+          e.preventDefault();
+          _this.toggleOpen();
+        });
+
+        this.$checkAll.on("click", function (e) {
+          e.preventDefault();
+          _this.onCheckAll();
+        });
+
+        this.$inputs.on("change", function (e) {
+          _this.onCheckBox();
+        });
+      };
+
+      CheckboxDropdown.prototype.onCheckBox = function () {
+        this.updateStatus();
+      };
+
+      CheckboxDropdown.prototype.updateStatus = function () {
+        var checked = this.$el.find(":checked");
+
+        this.areAllChecked = false;
+        this.$checkAll.html("Check All");
+
+        if (checked.length <= 0) {
+          this.$label.html("Select Options");
+        } else if (checked.length === 1) {
+          this.$label.html(checked.parent("label").text());
+        } else if (checked.length === this.$inputs.length) {
+          this.$label.html("All Selected");
+          this.areAllChecked = true;
+          this.$checkAll.html("Uncheck All");
+        } else {
+          this.$label.html(checked.length + " Skills selected");
+        }
+      };
+
+      CheckboxDropdown.prototype.onCheckAll = function (checkAll) {
+        if (!this.areAllChecked || checkAll) {
+          this.areAllChecked = true;
+          this.$checkAll.html("Uncheck All");
+          this.$inputs.prop("checked", true);
+        } else {
+          this.areAllChecked = false;
+          this.$checkAll.html("Check All");
+          this.$inputs.prop("checked", false);
+        }
+
+        this.updateStatus();
+      };
+
+      CheckboxDropdown.prototype.toggleOpen = function (forceOpen) {
+        var _this = this;
+
+        if (!this.isOpen || forceOpen) {
+          this.isOpen = true;
+          this.$el.addClass("on");
+          $(document).on("click", function (e) {
+            if (!$(e.target).closest("[data-control]").length) {
+              _this.toggleOpen();
+            }
+          });
+        } else {
+          this.isOpen = false;
+          this.$el.removeClass("on");
+          $(document).off("click");
+        }
+      };
+
+      var checkboxesDropdowns = document.querySelectorAll(
+        '[data-control="checkbox-dropdown"]'
+      );
+      for (var i = 0, length = checkboxesDropdowns.length; i < length; i++) {
+        new CheckboxDropdown(checkboxesDropdowns[i]);
+      }
+    })(jQuery);
+  </script>
+</body>

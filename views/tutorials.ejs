@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl"
+      crossorigin="anonymous"
+    />
+
+    <!-- FA CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.css"
+      rel="stylesheet"
+    />
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.png" type="image/png" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+    <link rel="stylesheet" href="css/modal_form.css" />
+    <link rel="stylesheet" href="css/toast.css" />
+
+    <!-- Title of Page -->
+    <title>FemSTEM</title>
+  </head>
+
+  <body>
+    <%- include('modal_form') %> <%- include('toast') %>
+
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-expand-md navbar-light fixed-top"
+      style="background-color: #d291bc !important"
+    >
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img
+            src="img/logo-nobg.png"
+            width="250"
+            background="white"
+            text-indent="-99999px"
+            style="margin-left: 3%"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/help">Help</a>
+              <% } %>
+            </li>
+            <li class="nav-item nav-item-active">
+              <a class="nav-link nav-link-active" aria-current="page" href="#"
+                >Tutorials</a
+              >
+            </li>
+            <li class="nav-item">
+              <% if(currentUser){ %>
+              <a class="nav-link" aria-current="page" href="/teammates"
+                >Teammates</a
+              >
+              <% } %>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/opportunities"
+                >Opportunities</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/pride">Pride</a>
+            </li>
+
+            <li
+              class="nav-item"
+              style="
+                background-color: #d291bc !important;
+                margin-bottom: 0 !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+              "
+            >
+              <% if(currentUser){ %>
+              <a
+                class="nav-link"
+                aria-current="page"
+                href="/profile"
+                style="
+                  margin-top: 0 !important;
+                  margin-bottom: 0 !important;
+                  padding-top: 0 !important;
+                  padding-bottom: 0 !important;
+                "
+                ><i
+                  class="fas fa-user-circle"
+                  style="
+                    font-size: 36px;
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                    padding-top: 0 !important;
+                    padding-bottom: 0 !important;
+                    color: #ffdfd3;
+                  "
+                ></i
+                ><%= currentUser.name %></a
+              >
+              <% } %>
+            </li>
+
+            <% if(!currentUser){ %>
+            <li class="nav-item">
+              <a
+                id="modal_btn"
+                class="nav-link btn-get-quote text-white"
+                href="#login"
+                >Login</a
+              >
+            </li>
+            <% } else { %>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Introduction on tutorial page -->
+    <div class="container top-con">
+      <div class="row">
+        <div class="col-md-9 wow fadeIn">
+          <h2>Best women in tech tutorials</h2>
+          <br />
+          <p>
+            Tired of only "tech guy teaches code" or "types of software guys"
+            videos flooding your Youtube search results? Well, we have been
+            there too and the level of disappointment that we feel on not
+            finding any female or LQBTQIA+ made Youtube tech tutorials is pretty
+            high. Therefore, we have decided that hell, enough is enough.
+            <br />
+            It's time we highlight all our amazing femme Youtube tutors through
+            this advanced Youtube search algorithm we have used.
+            <br /><br />
+            Excited to try it?
+            <br />
+            Simply, type in the keywords or tutorial topics you're interested in
+            and hit Search!
+          </p>
+        </div>
+        <div class="col-md-2 offset-md-1 wow fadeInRight">
+          <img src="img/tutorial.png" width="300px" style="float: right" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Youtube tutorial search -->
+    <div class="container">
+      <div class="row">
+        <form id="tut-form">
+          <div class="form-group col-md-8">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="Search the best women in tech tutorials"
+              id="search"
+              style="display: inline-block"
+              required
+            />
+            <button
+              type="submit"
+              class="btn btn-primary"
+              value="Search"
+              style="margin-top: 2%"
+            >
+              Search
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tutorials display -->
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div id="videos">
+            <!-- Videos loaded dynamically -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Female Youtubers -->
+    <div class="testimonials-clean" style="margin-top: 8%; padding-bottom: 5%">
+      <div class="container">
+        <div class="intro">
+          <h2 class="text-center">Top Female Techie Youtubers!</h2>
+          <p class="text-center">
+            This list is in no way exhaustive, as there are just so many!!
+            However, we included few of the ones that we know and love. Feel
+            free to find your own codess! And become the next one.
+          </p>
+        </div>
+        <div class="row people">
+          <div
+            class="col-md-6 col-lg-4 item"
+            onclick="location.href='https://www.youtube.com/c/KathrynHodgeblondiebytes';"
+            style="cursor: pointer"
+          >
+            <div class="box">
+              <p class="description">
+                She uploads weekly tutorials teaching viewers how to code, and
+                some of her most popular videos such as ‘learn to code in 6
+                months’ and ‘Javascript in 7 minutes’ have reached hundreds of
+                thousands of people.
+              </p>
+            </div>
+            <div class="author">
+              <img
+                class="rounded-circle"
+                src="https://www.womenintech.co.uk/wp-content/uploads/2019/12/unnamed-5.jpg"
+              />
+              <h5 class="name">blondiebytes</h5>
+              <p class="title">Computer Scientist</p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 item"
+            onclick="location.href='https://www.youtube.com/user/ijustine';"
+            style="cursor: pointer"
+          >
+            <div class="box">
+              <p class="description">
+                Her video content varies from reviews of new tech products to
+                cyber hacks and tips. More recently iJustine has launched a
+                programme teaching her subscribers about tech vlogging called
+                ‘Vlog University with iJustine’.
+              </p>
+            </div>
+            <div class="author">
+              <img
+                class="rounded-circle"
+                src="https://www.womenintech.co.uk/wp-content/uploads/2019/12/ijustineyoutube-500x500.jpg"
+              />
+              <h5 class="name">iJustine</h5>
+              <p class="title">American YouTuber, host, author, actress</p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 item"
+            onclick="location.href='https://www.youtube.com/channel/UCXX7AV8HDBCZXbKRHJYYODg';"
+            style="cursor: pointer"
+          >
+            <div class="box">
+              <p class="description">
+                She engineers things and documents her findings, prototyping,
+                experiments on YouTube.
+              </p>
+            </div>
+            <div class="author">
+              <img
+                class="rounded-circle"
+                src="https://images.squarespace-cdn.com/content/5e6299f12514b92ff2cb7e6b/1584038674492-N0XVAZ541MBCLVJRWE0T/estefannie-about6.jpg?format=1500w&content-type=image%2Fjpeg"
+              />
+              <h5 class="name">Estefannie</h5>
+              <p class="title">Engineer, computer scientist, designer</p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 item"
+            onclick="location.href='https://www.youtube.com/c/GeekGurlDiaries';"
+            style="cursor: pointer; margin-top: 3%"
+          >
+            <div class="box">
+              <p class="description">
+                Carrie Anne creates video content about topics such as
+                programming, electronics, and computer science and is committed
+                to curating an enthusiasm in young women for tech by making it
+                highly accessible for them to learn about and get involved with.
+              </p>
+            </div>
+            <div class="author">
+              <img
+                class="rounded-circle"
+                src="https://pbs.twimg.com/profile_images/881867913359216641/PsIX7uhT_400x400.jpg"
+              />
+              <h5 class="name">Geek Gurl Diaries</h5>
+              <p class="title">English teacher of computer science, author</p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 item"
+            onclick="location.href='https://www.youtube.com/channel/UCjdRbKZ494DfZ4zeX19rICw';"
+            style="cursor: pointer; margin-top: 3%"
+          >
+            <div class="box">
+              <p class="description">
+                An ex Google employee, Masha uses her channel to share her
+                stories, skills, and advice for women with a passion for code.
+              </p>
+            </div>
+            <div class="author">
+              <img
+                class="rounded-circle"
+                src="https://yt3.ggpht.com/ytc/AAUvwnhCRf3_NfHDjjAMVxsM42Zr73jnXgGDIgsyEaEiOA=s88-c-k-c0x00ffffff-no-rj"
+              />
+              <h5 class="name">Coding Blonde</h5>
+              <p class="title">Content creator, entrepreneur, educator</p>
+            </div>
+          </div>
+
+          <div
+            class="col-md-6 col-lg-4 item"
+            onclick="location.href='https://www.youtube.com/channel/UCEDkO7wshcDZ7UZo17rPkzQ';"
+            style="cursor: pointer; margin-top: 3%"
+          >
+            <div class="box">
+              <p class="description">
+                With her life in Silicon Valley, she aims to make the tech
+                industry feel more accessible to those pursuing a career in it.
+                Besides reviews, tutorials and technicals, she also speaks about
+                the journey to becoming a software engineer.
+              </p>
+            </div>
+            <div class="author">
+              <img
+                class="rounded-circle"
+                src="https://yt3.ggpht.com/ytc/AAUvwnivjbUJ86-ZYW6puGnhv0Rey-osg2TL00CF-sEXXw=s88-c-k-c0x00ffffff-no-rj"
+              />
+              <h5 class="name">mayuko</h5>
+              <p class="title">Senior Software Engineer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="margin-top: 0 !important">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 footer-left">
+            <p>
+              <img src="img/favicon.png" style="width: 65px" />
+              <span style="color: #573f70; font-weight: 600"
+                >Made with <i class="fas fa-heart"></i> by FemSTEM</span
+              >
+            </p>
+          </div>
+          <div class="col-md-3 offset-md-1 footer-right">
+            <a href="https://github.com/Swatilekha-Roy/Fem-STEM"
+              ><i class="fab fa-github"></i
+            ></a>
+            <a href="mailto:swatilekha.roy4@gmail.com"
+              ><i class="fa fa-envelope"></i
+            ></a>
+            <a href="https://discord.gg/CBteqBHz3b"
+              ><i class="fab fa-discord"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll to top arrow -->
+    <a href="javascript:" id="return-to-top"
+      ><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 30px"></i
+    ></a>
+
+    <!-- JQuery JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Google API JS-->
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"
+      integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js"
+      integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Custom scripts -->
+    <script type="text/javascript" src="js/modal.js"></script>
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript" src="js/wow.min.js"></script>
+
+    <!-- Userway -->
+    <script>
+      (function (d) {
+        var s = d.createElement("script");
+        s.setAttribute("data-account", "E9TGLGySQm");
+        s.setAttribute("src", "https://cdn.userway.org/widget.js");
+        (d.body || d.head).appendChild(s);
+      })(document);
+    </script>
+    <noscript
+      >Please ensure Javascript is enabled for purposes of
+      <a href="https://userway.org">website accessibility</a></noscript
+    >
+
+    <!-- WOW animations -->
+    <script type="text/javascript">
+      new WOW().init();
+    </script>
+  </body>
+</html>
