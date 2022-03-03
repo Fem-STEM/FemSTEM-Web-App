@@ -33,7 +33,7 @@ https://discord.com/invite/CBteqBHz3b
 - Please make sure that you already have Node.js installed in your system.
 - Next, type: 
 `git clone https://github.com/Swatilekha-Roy/Fem-STEM` on your command prompt.
-- Once your repo is cloned, run `npm i` on yiur prompt.
+- Once your repo is cloned, run `npm i` on your prompt.
 - Type `node app.js` or `npm run dev` (latter suggested) on your prompt.
 - The app must be running on `localhost:3000` on your system. 
 - Open any broswer and type `localhost:3000` and enjoy. :)
