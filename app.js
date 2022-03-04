@@ -28,17 +28,19 @@ app.use(
   })
 );
 
-// Database user ids
-var mongo_username = process.env.MONGO_USERNAME;
-var mongo_password = process.env.MONGO_PASSWORD;
+// mongo url < Local / Remote >
+const mongo_uri = process.env.MONGO_LOCAL;
+const mongo_database = process.env.DATABASE;
 
 mongoose.connect(
-  `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
+  `${mongo_uri}/${mongo_database}`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  }
-);
+  }, (err) => {
+    if (err) console.error("Error While connect");
+    else console.log("DB connected Successfully!");
+  });
 
 app.use(methodOverride("_method")); // method-override helps access app.delete() for log out
 app.use(passport.initialize()); // used to initialize Passport, used to use passport for salt and hashing in our code
