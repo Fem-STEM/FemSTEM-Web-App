@@ -33,7 +33,7 @@ var mongo_username = process.env.MONGO_USERNAME;
 var mongo_password = process.env.MONGO_PASSWORD;
 
 mongoose.connect(
-  `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
+  process.env.LOCAL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
