@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/modal_form.css">
     <link rel="stylesheet" href="css/toast.css">
     <link rel="stylesheet" href="css/pride.css">
-    <style> 
+    <style>
       #addgroup {
         display: none;
       }
@@ -53,7 +53,7 @@
         }
       </style>
 
-      <script> 
+      <script>
         $(document).ready(function(){
           $("#addbtn").click(function(){
             $("#addgroup").slideToggle("slow");
@@ -73,12 +73,12 @@
         }
 
       </script>
-        
+
     <!-- Title of Page -->
     <title>FemSTEM</title>
   </head>
 
-  
+
   <body>
     <%- include('modal_form') %>
     <%- include('toast') %>
@@ -119,10 +119,10 @@
 
             <li class="nav-item" style="background-color: #d291bc !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;">
               <% if(currentUser){ %>
-                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><i class="fas fa-user-circle" style="font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #FFDFD3;"></i><%= currentUser.name %></a>
+                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><img src=<%=avatarUrl %> style="height:36px;width:36px;border-radius:50%;font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #FFDFD3;"></i><%= currentUser.name %></a>
                 <% } %>
             </li>
-           
+
               <% if(!currentUser){ %>
                 <li class="nav-item">
                 <a id="modal_btn" class="nav-link btn-get-quote text-white" href="#login">Login</a>
@@ -131,7 +131,7 @@
                 <li class="nav-item">
                 <a class="nav-link " href="/logout">Logout</a>
                 </li>
-              <% } %>      
+              <% } %>
           </ul>
         </div>
       </div>
@@ -142,7 +142,7 @@
   <div class="relative">
       <div class="bg-cover h-64 text-center overflow-hidden no-repeat" style="height: 450px; margin-top: 100px; background-image: url('img/pride.jpg')" ></div>
   </div>
-    
+
 
 <div class="quotes page-width">
     <div class="quotes-slide slideshow__slide--active"  data-slider-slide-index="0" aria-hidden="false" tabindex="-1">
@@ -175,12 +175,12 @@
             <div class="content">
                 <p>My experience as a female hacker in a male dominant field has been empowering.
                   Starting off, I was uncertain about my capabilities and was easily intimidated by people who were older and more experienced than me. When I won my first hackathon, I was in disbelief...
-                   
+
                   <button class="btn btn-primary story-btn" onclick="showFullStory()" style="margin-top: 5% !important; float: right !important;">Read More</button>
 
-                    <p class="story-hid" style="display: none;"> 
-                      as I thought it was practically chance and I happened to be very lucky.                  
-                    However, as I started to develop more hackathon projects, I realized my passion and creativity made me capable of becoming an innovator in the industry. As a result, I started my personal company Frostack Games, becoming one of the few female run companies in the gaming industry.                  
+                    <p class="story-hid" style="display: none;">
+                      as I thought it was practically chance and I happened to be very lucky.
+                    However, as I started to develop more hackathon projects, I realized my passion and creativity made me capable of becoming an innovator in the industry. As a result, I started my personal company Frostack Games, becoming one of the few female run companies in the gaming industry.
                     These experiences have helped me grow as a person and realize the fullest of my potential. I hope my experiences as a female who found growth within the industry within the matter of months can inspire women to take the chance and reach for their dreams.
                     <button class="btn btn-primary" onclick="hideullStory()" style="margin-top: 5% !important; float: right !important;">Read less</button>
                     </p>
@@ -198,21 +198,21 @@
                 </svg>
             </span>
             <div class="content">
-                <p>I am super lucky to have found my female hacking squad and to have met so many amazing and empowered female and non-binary hackers on the way. 
+                <p>I am super lucky to have found my female hacking squad and to have met so many amazing and empowered female and non-binary hackers on the way.
                   I still remember my first hackathon from a few months back where my teammates and I...
 
                   <button class="btn btn-primary story-btn" onclick="showFullStory()" style="margin-top: 5% !important; float: right !important;">Read More</button>
-                  
+
                   <p class="story-hid" style="display: none;"> stayed up all night working on our mental health hack, at Athena Hacks, each of us supporting and learning so much from each other on the way.
                   It was an incredible experience and the best cherry on the cake was that my teammates Chehak, Nandini, Soumi and I ended up winning a Microsoft sponsored category at the end of the night.
-                  All our hard work had paid off and the secret behind that was our entire team had only sheros, sheros who trusted and believed in each other, rather than discounting their efforts or taking credit. 
+                  All our hard work had paid off and the secret behind that was our entire team had only sheros, sheros who trusted and believed in each other, rather than discounting their efforts or taking credit.
                   That was the day we knew that we would help more female student hackers like us to find their tribe and be inspired from women techies! Hence, FemSTEM is born.
                   <button class="btn btn-primary" onclick="hideullStory()" style="margin-top: 5% !important; float: right !important;">Read less</button>
                 </p>
                 </p>
             </div>
             <cite>Swatilekha Roy</cite>
-            
+
         </blockquote>
     </div>
 
@@ -220,7 +220,7 @@
 
 
 <section class="spacer">
-			
+
     <div class="testimonial-section">
         <div class="testi-user-img">
         <div class="swiper-container gallery-thumbs">
@@ -234,11 +234,11 @@
               <div class="swiper-slide">
               <img class="u2" src="https://miro.medium.com/max/3600/1*z_FOflZWpVR6CaThvcQzeA.jpeg" alt="">
               </div>
-          
+
               <div class="swiper-slide">
               <img class="u4" src="https://www.bu.edu/files/2019/03/resize-18-1086-SHEHACKS-012.jpg" alt="">
               </div>
-              
+
               </div>
           </div>
         </div>
@@ -255,50 +255,50 @@
                                   </p>
                                   <div class="name">-Ada Lovelace-</div>
                                   <div class="designation">University Student</div>
-                                  
+
                               </div>
                           </div>
                           <div class="swiper-slide">
                               <div class="quote">
                                     <img class="quote-icon" src="https://md-aqil.github.io/images/quote.png" alt="">
-                                
+
                                   <p>
                                           “Humans are allergic to change. They love to say, 'We've always done it this way.' I try to fight that. That's why I have a clock on my wall that runs counter-clockwise...“
                                   </p>
                                   <div class="name">-Grace Hopper-</div>
                                   <div class="designation">University Student</div>
-                                  
+
                               </div>
                           </div>
                           <div class="swiper-slide">
                               <div class="quote">
                                     <img class="quote-icon" src="https://md-aqil.github.io/images/quote.png" alt="">
-                                      
+
                                   <p>
                                           “You’re never too old, and if you want to, as my mother said, you can do anything you want to, but you have to work at it...“
                                   </p>
                                   <div class="name">-Annie Easley-</div>
                                   <div class="designation">University Student</div>
-                                  
+
                               </div>
                           </div>
                           <div class="swiper-slide">
                                   <div class="quote">
                                         <img class="quote-icon" src="https://md-aqil.github.io/images/quote.png" alt="">
-                                     
+
                                       <p>
                                               “We had the quaint notion at the time that software should be completely, absolutely free of bugs. Unfortunately it’s a notion that never really quite caught on...“
                                       </p>
                                       <div class="name">-Mary Wilkes-</div>
                                       <div class="designation">University Student</div>
-                                      
+
                                   </div>
                               </div>
-                          
+
                       </div>
                       <!-- If we need pagination -->
                       <div class="swiper-pagination swiper-pagination-white"></div>
-                  
+
                   </div>
         </div>
     </div>
@@ -309,7 +309,7 @@
   <h4><a href="mailto:swatilekha.roy4@gmail.com?subject=My%20Tech%20Story!">Share your sucess story with us...</a></h4>
 
 </div>
-   
+
     <!-- Footer -->
     <footer>
       <div class="container">
@@ -317,7 +317,7 @@
           <div class="col-md-4 footer-left">
             <p>
               <img src="img/favicon.png" style="width: 65px;">  <span style="color: #573f70; font-weight: 600;">Made with <i class="fas fa-heart"></i> by FemSTEM</span>
-            </p>        
+            </p>
           </div>
           <div class="col-md-3 offset-md-1 footer-right">
             <a href="https://github.com/Swatilekha-Roy/Fem-STEM"><i class="fab fa-github"></i></a>
@@ -333,14 +333,14 @@
 
     <!-- JQuery JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
-    
+
 	<script src="https://md-aqil.github.io/images/swiper.min.js"></script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 
-    <!-- Custom scripts -->    
+    <!-- Custom scripts -->
     <script type="text/javascript" src="js/modal.js"></script>
     <script type="text/javascript" src="js/scripts.js"></script>
     <script type="text/javascript" src="js/wow.min.js"></script>

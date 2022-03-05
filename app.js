@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const ejs = require("ejs");
 
+
 // Intialize the app
 const app = express();
 
@@ -14,6 +15,7 @@ const User = require("./db/models/users");
 const Post = require("./db/models/post");
 const Group = require("./db/models/group");
 const Comment = require("./db/models/comment");
+var toonavatar = require('cartoon-avatar');
 
 // Passport authentication
 const passport = require("passport");
@@ -33,7 +35,7 @@ var mongo_username = process.env.MONGO_USERNAME;
 var mongo_password = process.env.MONGO_PASSWORD;
 
 mongoose.connect(
-  `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
+ `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -72,8 +74,15 @@ var counter = 0;
 app.use("/", authRoutes);
 
 // Homepage rendering
+
+//Avatar url for gender=female of type 5
+var avatarUrl = toonavatar.generate_avatar({"gender":"female","id":5});
+
 app.get("/", function (req, res) {
-  res.render("index", { currentUser: req.user });
+  res.render("index", {
+    currentUser: req.user,
+    avatarUrl:avatarUrl,
+   });
 });
 
 // Opportunities page rendering
@@ -82,6 +91,7 @@ app.get("/opportunities", function (req, res) {
     res.render("opportunities", {
       currentUser: req.user,
       post: post,
+      avatarUrl:avatarUrl,
     });
   });
 });
@@ -105,6 +115,7 @@ app.get("/help", function (req, res) {
     res.render("help", {
       currentUser: req.user,
       groups: group,
+      avatarUrl:avatarUrl,
     });
   });
 });
@@ -138,6 +149,7 @@ app.get("/help/:id", function (req, res) {
         res.render("grouppage", {
           currentUser: req.user,
           group: found,
+          avatarUrl:avatarUrl,
         });
     });
 });
@@ -174,7 +186,7 @@ app.post("/help/:id", function (req, res) {
 
 // Groups page rendering
 app.get("/grouppage", function (req, res) {
-  res.render("grouppage", { currentUser: req.user });
+  res.render("grouppage", { currentUser: req.user,avatarUrl:avatarUrl, });
 });
 
 app.post("/grouppage", function (req, res) {
@@ -185,7 +197,7 @@ app.post("/grouppage", function (req, res) {
 
 // Tutorials page rendering
 app.get("/tutorials", function (req, res) {
-  res.render("tutorials", { currentUser: req.user });
+  res.render("tutorials", { currentUser: req.user,avatarUrl:avatarUrl, });
 });
 
 // Teammates page rendering
@@ -195,6 +207,8 @@ app.get("/teammates", function (req, res) {
   res.render("teammates", {
     currentUser: req.user,
     requser: requser,
+    avatarUrl:avatarUrl,
+
   });
 });
 
@@ -222,12 +236,12 @@ skillarr = [];
 
 // Profile page rendering
 app.get("/profile", function (req, res) {
-  res.render("profile", { currentUser: req.user });
+  res.render("profile", { currentUser: req.user,avatarUrl:avatarUrl });
 });
 
 // pride page rendering
 app.get("/pride", function (req, res) {
-  res.render("pride", { currentUser: req.user });
+  res.render("pride", { currentUser: req.user,avatarUrl:avatarUrl });
 });
 
 // Ports

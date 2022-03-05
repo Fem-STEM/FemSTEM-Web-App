@@ -217,9 +217,13 @@
                   padding-top: 0 !important;
                   padding-bottom: 0 !important;
                 "
-                ><i
-                  class="fas fa-user-circle"
+                ><img
+                  src=<%= avatarUrl %>
                   style="
+
+                  height:36px;
+                  width:36px;
+                  border-radius:50%;
                     font-size: 36px;
                     margin-top: 0 !important;
                     margin-bottom: 0 !important;
@@ -227,7 +231,7 @@
                     padding-bottom: 0 !important;
                     color: #ffdfd3;
                   "
-                ></i
+                ></img
                 ><%= currentUser.name %></a
               >
               <% } %>
