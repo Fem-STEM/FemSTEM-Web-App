@@ -41,7 +41,7 @@ strong {
 }
 
 .nav-item {
-    color: #fce9e3;    
+    color: #fce9e3;
 }
 
 .nav-item-active {
@@ -99,7 +99,7 @@ strong {
     border-radius: 0 0 120% 20rem;
     max-height: 70vh;
   }
-  
+
   .new-header-heading {
     margin: 0 auto;
     font-size: 2.4rem;
@@ -109,14 +109,14 @@ strong {
     text-decoration: yellow;
     position: relative;
   }
-  
+
   .header-laptop {
     width: 157%;
     float: left;
     padding-top: 1vh;
     display: inline;
   }
-  
+
   .header-p {
     padding-right: 2%;
     display: block;
@@ -124,7 +124,7 @@ strong {
     padding-top: 3%;
     color: #ffffff;
   }
-  
+
   .header-girls {
     width: 150%;
     padding-bottom: 0;
@@ -134,21 +134,21 @@ strong {
     padding-top: 0%;
     /* padding-left: 60%; */
   }
-  
+
   @media only screen and (max-width: 990px) {
     .header-p {
       font-size: 1.5rem;
     }
-  
+
     .new-header-heading {
       font-size: 3.5rem;
     }
-  
+
     .header-laptop {
       display: none;
       width: 0;
     }
-  
+
     #laptop-girl {
       display: none;
       width: 0;
@@ -165,23 +165,23 @@ strong {
     margin-bottom: 20px;
     color: rgba(54, 54, 54, 0.884);
   }
-  
+
   .about .content h3 {
     font-weight: 500;
     line-height: 32px;
     font-size: 24px;
   }
-  
+
   .about .content ul {
     list-style: none;
     padding: 0;
   }
-  
+
   .about .content ul li {
     padding: 10px 0 0 28px;
     position: relative;
   }
-  
+
   .about .content ul i {
     left: 0;
     top: 7px;
@@ -189,11 +189,11 @@ strong {
     font-size: 20px;
     color: rgb(1, 100, 1);
   }
-  
+
   .about .content p:last-child {
     margin-bottom: 0;
   }
-  
+
 
 
 
@@ -260,12 +260,12 @@ strong {
   ::-webkit-scrollbar-thumb:hover {
     background: #a1608b;
   }
-  
+
   ::-webkit-scrollbar-thumb:active {
     background: #a1608b;
   }
 
-  
+
 /* Footer */
 footer {
 	margin-top: 70px;
@@ -284,8 +284,8 @@ footer {
     font-size: 32px;
     color: #FFDFD3;
 }
-.footer-right a:hover, .footer-right a:focus { 
-    color:#fec8d8; 
+.footer-right a:hover, .footer-right a:focus {
+    color:#fec8d8;
 }
 
 
@@ -329,32 +329,139 @@ footer {
 
 /* What we offer */
 .ul-offer {
-    list-style: none;
-	 counter-reset: list-counter;
-     margin-top: 2%;
+  list-style-type: none;
+  margin-top: 2%;
 }
 
 .ul-offer li {
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
+	margin-bottom: 25px;
 }
 
-.ul-offer li::before {
-    content: counter(list-counter);
-    counter-increment: list-counter;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #43d2eb;
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    color: white;
-    margin-right: 8px;
+.ul-offer li span {
+  float: left;
+  width: 50px;
 }
 
+.number {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	background-color: #43d2eb;
+	color : #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.list-items {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	top: 6px;
+}
+
+@media screen and (max-width: 991px) {
+
+	.ul-offer {
+	  margin-top: 5%;
+	}
+
+	.ul-offer li {
+		margin-bottom: 8px;
+	}
+
+	.ul-offer .second-list {
+		margin-bottom: 31px;
+	}
+
+	.list-items {
+		top: -5px;
+	}
+
+	.second {
+		top : 6px;
+	}
+}
+
+@media screen and (max-width: 476px) {
+	.number {
+		height: 35px;
+		width: 35px;
+	}
+
+	.fourth-list span {
+		margin-bottom: 14px;
+	}
+
+	.ul-offer li {
+		margin-bottom: 5px;
+	}
+}
+
+@media screen and (max-width: 471px) {
+	.first-list span {
+		margin-bottom: 14px;
+	}
+}
+
+@media screen and (max-width: 436px) {
+	.fifth-list span {
+		margin-bottom: 14px;
+	}
+}
+
+@media screen and (max-width: 420px) {
+	.third-list span {
+		margin-bottom: 14px;
+	}
+}
+
+@media screen and (max-width: 364px) {
+	.fourth-list span {
+		margin-bottom: 38px;
+	}
+}
+
+@media screen and (max-width: 342px) {
+	.first-list span {
+		margin-bottom: 38px;
+	}
+
+	.ul-offer {
+	  margin-top: 7%;
+	}
+}
+
+@media screen and (max-width: 337px) {
+	.second {
+		top: -5px;
+	}
+
+	.ul-offer .second-list {
+		margin-bottom: 5px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.fourth-list span {
+		margin-bottom: 62px;
+	}
+
+	.fifth-list span {
+		margin-bottom: 38px;
+	}
+}
+
+@media screen and (max-width: 296px) {
+	.first-list span {
+		margin-bottom: 63px;
+	}
+
+	.third-list span {
+		margin-bottom: 38px;
+	}
+}
 
 /* Top content responsive */
 .top-con {
@@ -381,7 +488,7 @@ footer {
     padding-top: 30px;
     text-align: left;
 }
- 
+
 .services-box .services-box-icon {
     width: 100px;
     height: 100px;
@@ -392,7 +499,7 @@ footer {
     text-align: center;
     border-radius: 10px;
 }
- 
+
 .services-box h3 {
     margin-top: 0;
     padding: 0 0 10px 0;
@@ -544,6 +651,6 @@ footer {
 
 
 
-html { 
+html {
     overflow-x: hidden !important;
 }
