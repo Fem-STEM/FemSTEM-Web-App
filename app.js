@@ -189,8 +189,8 @@ app.get("/tutorials", function (req, res) {
 });
 
 // Teammates page rendering
-var skillarr = new Array();
-var requser = new Array();
+var skillarr = [];
+var requser = [];
 app.get("/teammates", function (req, res) {
   res.render("teammates", {
     currentUser: req.user,
@@ -200,25 +200,46 @@ app.get("/teammates", function (req, res) {
 
 //teammates posting
 app.post("/teammates", function (req, res) {
-  for (var i = 0; i < req.body.checked.length; i++) {
-    skillarr[i] = req.body.checked[i];
-  }
-
-  var j = 0;
-  for (var i = 0; i < skillarr.length; i++) {
-    User.find({ skills: { $in: [skillarr[i]] } }, function (err, requserdb) {
-      //  selects the documents where the value of a field equals any value in the specified array
-      requserdb.forEach(function (user) {
-        requser[j] = user;
-        j++;
+  skillarr = [];
+  requser = [];
+  const currUser = req.user.name;
+  if(JSON.stringify(req.body) === '{}'){
+    res.redirect("/teammates");
+  }else{
+    if(typeof(req.body.checked) === "string"){
+      skillarr[0] = req.body.checked;
+    }else{
+      for (var i = 0; i < req.body.checked.length; i++) {
+        skillarr.push(req.body.checked[i]);
+      }
+    }
+    for (var i = 0; i < skillarr.length; i++) {
+      User.find({ skills: { $in: [skillarr[i]] } }, function (err, requserdb) {
+        //  selects the documents where the value of a field equals any value in the specified array
+        // console.log(requserdb);
+        requserdb.forEach(function (user) {
+          const userId = user._id.toString();
+          const userName = user.name;
+          const disId = user.discord_id;
+          var isPresent = false;
+          for(var j=0; j<requser.length; j++){
+              const presentId = requser[j]._id.toString();
+              const presentName = requser[j].name;
+              const presentDisId = requser[j].discord_id;
+              if(userId === presentId || (userName === presentName && disId === presentDisId)){
+                isPresent = true;
+                break;
+              }
+          }
+          if(isPresent === false && currUser !== userName){
+            requser.push(user)
+          }
+        });
       });
-    });
+    }
+    res.redirect("/teammates");
   }
-  res.redirect("/teammates");
 });
-
-requser = [];
-skillarr = [];
 
 // Profile page rendering
 app.get("/profile", function (req, res) {
@@ -228,6 +249,12 @@ app.get("/profile", function (req, res) {
 // pride page rendering
 app.get("/pride", function (req, res) {
   res.render("pride", { currentUser: req.user });
+});
+
+app.get("/logout", function(req, res) {
+  requser = [];
+  req.logout();
+  res.redirect("/");
 });
 
 // Ports
