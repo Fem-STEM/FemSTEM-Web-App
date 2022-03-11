@@ -35,7 +35,8 @@ var mongo_username = process.env.MONGO_USERNAME;
 var mongo_password = process.env.MONGO_PASSWORD;
 
 mongoose.connect(
- `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
+ // `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
+ 'mongodb://localhost:27017/peoplesDB',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
