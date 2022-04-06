@@ -44,7 +44,7 @@ git clone https://github.com/<your_username>/FemSTEM-Web-App.git
 
 cd FemSTEM-Web-App/
 
-![Step 4](./screenshots/cd.jpg)
+![Step 4](./screenshots/cd.png)
 
 *5.* Add a reference to the original repository.
 
