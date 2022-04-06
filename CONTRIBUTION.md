@@ -96,7 +96,7 @@ Make sure to read it here: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 - Make a small clip or take screenshots before and after making changes.
 
 
-*3.* Track your changes:heavy_check_mark: 
+*3.* Track your changes.
 
 
 `git add .` 
@@ -124,15 +124,15 @@ Make sure to read it here: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 ![Step 5](./screenshots/pull.jpg)
 
-> ### Guidelines for raising a pull request:
->
-> - Each pull request should have an appropriate and short title like "Fixed Bug in Experience Page"
->
-> - In case of multiple commits, please perform a rebase and make a squash commit before giving the pull request.
->
-> - Pull Requests without a description would often not be reviewed. Make sure you describe your intended changes in the description section of the pull request. (Use bullet points and phrases)
->
-> - Make sure to refer the respective issue in the respective PR using phrases like `Resolves #issue_number` or `Closes #issue_number`.
+ ## Guidelines for raising a pull request:
+
+ - Each pull request should have an appropriate and short title like "Fixed Bug in Experience Page"
+
+ - In case of multiple commits, please perform a rebase and make a squash commit before giving the pull request.
+
+ - Pull Requests without a description would often not be reviewed. Make sure you describe your intended changes in the description section of the pull request. (Use bullet points and phrases)
+
+ - Make sure to refer the respective issue in the respective PR using phrases like `Resolves #issue_number` or `Closes #issue_number`.
 
 
-*9.* Voila :exclamation: You have made a PR. Sit back patiently and relax while the project maintainers review your PR. Please understand at times the time can vary from a few hours to a few days.
+*9.* Hooray! You have made a PR. Sit back patiently and relax while the project maintainers review your PR. Please understand at times the time can vary from a few hours to a few days.
