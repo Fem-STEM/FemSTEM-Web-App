@@ -36,38 +36,38 @@ Make sure to read it here: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 *3.*  Open git bash in the folder where you wish to work on the project and clone your forked copy of the project by typing the command given below in git. 
 
-git clone https://github.com/<your_username>/FemSTEM-Web-App.git 
+`git clone https://github.com/<your_username>/FemSTEM-Web-App.git` 
 
 ![Step 3](./screenshots/clone.jpg)
 
 *4.* Navigate to the project directory by typing the following command.
 
-cd FemSTEM-Web-App/
+`cd FemSTEM-Web-App/`
 
 ![Step 4](./screenshots/cd.png)
 
 *5.* Add a reference to the original repository.
 
 
-git remote add upstream https://github.com/<your_username>/FemSTEM-Web-App.git
+`git remote add upstream https://github.com/<your_username>/FemSTEM-Web-App.git`
 
 *6.* Check the remotes for this repository.
 
 
-git remote -v
+`git remote -v`
 
 *7.* Always take a pull from the upstream repository to your main branch to keep it at par with the main project(updated repository).
 
 
-git pull upstream main
+`git pull upstream main`
 
 *8.* Then, run the following command in prompt.
 
-npm i 
+`npm i` 
 
 *9.* Then, run the following command in prompt.
 
-node app.js  or npm start 
+`node app.js  or npm start`
 
 *10.* The app must be running on `localhost:3000` on your system.
 
@@ -79,7 +79,7 @@ node app.js  or npm start
 *1.* Create a new branch (DO NOT name it MAIN or MASTER or anything random).
 
 
-git checkout -b <your_branch_name>
+`git checkout -b <your_branch_name>`
 
 
 *2.* Perfom your desired changes to the code base.
@@ -99,20 +99,20 @@ git checkout -b <your_branch_name>
 *3.* Track your changes:heavy_check_mark: 
 
 
-git add . 
+`git add .` 
 
 
-*4.* Commit your changes .
+*4.* Commit your changes.
 
 
-git commit -m "Relevant message"  (usually title of the pull request)
+`git commit -m "Relevant message"  (usually title of the pull request)`
 
 - *Make sure to condense your changes into a single commit*.
 
 *5.* Push the committed changes in your feature branch to your remote repo.
 
 
-git push -u origin <your_branch_name>
+`git push -u origin <your_branch_name>`
 
 *6.* To create a pull request, click on `compare and pull requests`. Please ensure you compare your feature branch to the desired branch of the repo you are suppose to make a PR to.
 
