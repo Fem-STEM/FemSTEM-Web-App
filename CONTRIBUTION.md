@@ -38,7 +38,7 @@ Make sure to read it here: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 `git clone https://github.com/<your_username>/FemSTEM-Web-App.git` 
 
-![Step 3](./screenshots/clone.png)
+![Step 3](./screenshots/clone.jpg)
 
 *4.* Navigate to the project directory by typing the following command.
 
