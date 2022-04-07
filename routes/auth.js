@@ -11,26 +11,31 @@ router.get("/register", (req, res) => {
 });
 //handle sign up logic
 router.post("/register", function (req, res) {
-  User.register(
-    new User({
-      username: req.body.username,
-      name: req.body.name,
-      is_mentor: req.body.mentor,
-      skills: req.body.skills,
-      discord_id: req.body.disid,
-    }),
-    req.body.password,
-    function (err, user) {
-      if (err) {
-        console.log(err);
-        // req.flash("error",err.message); //this prints the err as error on the screen. error object has many things and err.message gives us the problem occured
-        return res.redirect("/register");
-      } //in these cases always use res.redirect and not res.render as in res.render we don't go through the app.get route so the middlware where we specify req.error is not utilized
-      passport.authenticate("local")(req, res, function () {
-        res.redirect("/");
-      });
-    }
-  );
+  if (req.body.password === req.body.cpassword) {
+    User.register(
+      new User({
+        username: req.body.username,
+        name: req.body.name,
+        is_mentor: req.body.mentor,
+        skills: req.body.skills,
+        discord_id: req.body.disid,
+      }),
+      req.body.password,
+      function (err, user) {
+        if (err) {
+          console.log(err);
+          // req.flash("error",err.message); //this prints the err as error on the screen. error object has many things and err.message gives us the problem occured
+          return res.redirect("/register");
+        } //in these cases always use res.redirect and not res.render as in res.render we don't go through the app.get route so the middlware where we specify req.error is not utilized
+        passport.authenticate("local")(req, res, function () {
+          res.redirect("/");
+        });
+      }
+    );
+  } else {
+    console.log("Passwords didn't match");
+    return res.redirect("/register");
+  }
 });
 
 //show login form when session is inactive
