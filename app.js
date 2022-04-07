@@ -30,15 +30,15 @@ app.use(
 
 // mongo url < Local / Remote >
 const mongo_uri = process.env.MONGO_LOCAL;
-const mongo_database = process.env.DATABASE;
+const mongo_database = process.env.MONGO_REMOTE;
 
 mongoose.connect(
-  `${mongo_uri}/${mongo_database}`,
+  `${mongo_database}`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   }, (err) => {
-    if (err) console.error("Error While connect");
+    if (err) console.log(err);
     else console.log("DB connected Successfully!");
   });
 
