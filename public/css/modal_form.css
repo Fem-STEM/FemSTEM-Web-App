@@ -221,3 +221,16 @@
     top: -1px;
     margin-right: 4px;
 }
+.password{
+    display:flex;
+    align-items: center;
+}
+#eye{
+    border-bottom: 1px solid #999;
+    padding: 14px 0;
+    border-left: 0;
+    border-top: 0;
+    border-right: 0;
+
+}
+
