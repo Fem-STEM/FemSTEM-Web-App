@@ -122,7 +122,7 @@ Make sure to read it here: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 *8.* Click on `Create Pull Request`.
 
-![Step 5](./screenshots/pull.jpg)
+![Step 5](./screenshots/pull.png)
 
  ## Guidelines for raising a pull request:
 
