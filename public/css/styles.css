@@ -41,13 +41,13 @@ strong {
 }
 
 .nav-item {
-    color: #fce9e3;
+    color: #fce9e3;  
+    margin-inline: .5rem;  
 }
 
 .nav-item-active {
     background-color: #fabacd;
     border-radius: 1.8rem;
-    margin-left: 1.5rem;
     color: #6f5788 !important;
 }
 
@@ -55,7 +55,6 @@ strong {
     background-color: #fec8d8;
     border-radius: 1.8rem;
     color: #6f5788 !important;
-    margin-left: 1.5rem;
 }
 
 .nav-link {
