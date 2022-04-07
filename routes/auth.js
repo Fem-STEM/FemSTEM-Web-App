@@ -47,10 +47,10 @@ router.post(
   function (req, res) {}
 );
 
-//LOGOUT
-router.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/");
-});
+// //LOGOUT
+// router.get("/logout", function (req, res) {
+//   req.logout();
+//   res.redirect("/");
+// });
 
 module.exports = router;
