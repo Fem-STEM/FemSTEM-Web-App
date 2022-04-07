@@ -27,18 +27,18 @@ Make sure to read it here: [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md)
 
 *1.*  Fork [this](https://github.com/Fem-STEM/FemSTEM-Web-App.git) repository by clicking on Fork button.  
 
-  ![Step 1](./screenshots/fork.jpg)
+  ![Step 1](./screenshots/fork.png)
 
 *2.*  You can confirm that this repository is a fork of the original repository by finding the "forked from Fem-STEM/FemSTEM-Web-App" text under the repository name.
 
-![Step 2](./screenshots/forked.jpg)
+![Step 2](./screenshots/forked.png)
 
 
 *3.*  Open git bash in the folder where you wish to work on the project and clone your forked copy of the project by typing the command given below in git. 
 
 `git clone https://github.com/<your_username>/FemSTEM-Web-App.git` 
 
-![Step 3](./screenshots/clone.jpg)
+![Step 3](./screenshots/clone.png)
 
 *4.* Navigate to the project directory by typing the following command.
 
