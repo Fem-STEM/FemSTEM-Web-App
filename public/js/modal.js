@@ -45,7 +45,21 @@ closebtn.addEventListener("click", function () {
   modal.style.display = "none";
 });
 
-
+var eyeView = false;
+const eye = document.getElementById("eye");
+eye.addEventListener("click", function () {
+    eyeView = !eyeView;
+    if(eyeView)
+    {
+        eye.setAttribute("class" ,"fa fa-eye");
+        document.getElementById("password").setAttribute("type","text");
+    }else
+    {
+        eye.setAttribute("class" ,"fa fa-eye-slash"); 
+        document.getElementById("password").setAttribute("type","password");   
+    }
+    
+})
 
 
 

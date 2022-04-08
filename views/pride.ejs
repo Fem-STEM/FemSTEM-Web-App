@@ -60,16 +60,16 @@
           });
         });
 
-        function showFullStory()
+        function showFullStory(btnId)
         {
-          document.querySelector(".story-hid").style.display = "inline-block";
-          document.querySelector(".story-btn").style.display = "none";
+          document.querySelectorAll(".story-hid")[btnId].style.display = "inline-block";
+          document.querySelectorAll(".story-btn")[btnId].style.display = "none";
         }
 
-        function hideullStory()
+        function hideullStory(btnId)
         {
-          document.querySelector(".story-hid").style.display = "none";
-          document.querySelector(".story-btn").style.display = "block";
+          document.querySelectorAll(".story-hid")[btnId-2].style.display = "none";
+          document.querySelectorAll(".story-btn")[btnId-2].style.display = "block";
         }
 
       </script>
@@ -140,7 +140,7 @@
 
    <!-- Header Code -->
   <div class="relative">
-      <div class="bg-cover h-64 text-center overflow-hidden no-repeat" style="height: 450px; margin-top: 100px; background-image: url('img/pride.jpg')" ></div>
+      <div class="bg-cover h-64 text-center overflow-hidden" style="height: 550px; width:100%; background-size: 100%; margin-top: 100px; background-image: url('img/pride.jpg'); background-repeat: no-repeat;" ></div>
   </div>
 
 
@@ -178,11 +178,15 @@
 
                   <button class="btn btn-primary story-btn" onclick="showFullStory()" style="margin-top: 5% !important; float: right !important;">Read More</button>
 
+
+                  <button id="0" class="btn btn-primary story-btn" onclick="showFullStory(this.id)" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
+
                     <p class="story-hid" style="display: none;">
                       as I thought it was practically chance and I happened to be very lucky.
                     However, as I started to develop more hackathon projects, I realized my passion and creativity made me capable of becoming an innovator in the industry. As a result, I started my personal company Frostack Games, becoming one of the few female run companies in the gaming industry.
                     These experiences have helped me grow as a person and realize the fullest of my potential. I hope my experiences as a female who found growth within the industry within the matter of months can inspire women to take the chance and reach for their dreams.
-                    <button class="btn btn-primary" onclick="hideullStory()" style="margin-top: 5% !important; float: right !important;">Read less</button>
+                    <button id="2" class="btn btn-primary" onclick="hideullStory(this.id)" style="margin-top: 5% !important; float: right !important;">Read less</button>
                     </p>
                 </p>
             </div>
@@ -201,13 +205,17 @@
                 <p>I am super lucky to have found my female hacking squad and to have met so many amazing and empowered female and non-binary hackers on the way.
                   I still remember my first hackathon from a few months back where my teammates and I...
 
+
                   <button class="btn btn-primary story-btn" onclick="showFullStory()" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
+                  <button id="1" class="btn btn-primary story-btn" onclick="showFullStory(this.id)" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
 
                   <p class="story-hid" style="display: none;"> stayed up all night working on our mental health hack, at Athena Hacks, each of us supporting and learning so much from each other on the way.
                   It was an incredible experience and the best cherry on the cake was that my teammates Chehak, Nandini, Soumi and I ended up winning a Microsoft sponsored category at the end of the night.
                   All our hard work had paid off and the secret behind that was our entire team had only sheros, sheros who trusted and believed in each other, rather than discounting their efforts or taking credit.
                   That was the day we knew that we would help more female student hackers like us to find their tribe and be inspired from women techies! Hence, FemSTEM is born.
-                  <button class="btn btn-primary" onclick="hideullStory()" style="margin-top: 5% !important; float: right !important;">Read less</button>
+                  <button id="3" class="btn btn-primary" onclick="hideullStory(this.id)" style="margin-top: 5% !important; float: right !important;">Read less</button>
                 </p>
                 </p>
             </div>

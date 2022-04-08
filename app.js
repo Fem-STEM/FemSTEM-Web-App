@@ -30,18 +30,22 @@ app.use(
   })
 );
 
-// Database user ids
-var mongo_username = process.env.MONGO_USERNAME;
-var mongo_password = process.env.MONGO_PASSWORD;
+// mongo url < Local / Remote >
+const mongo_uri = process.env.MONGO_LOCAL;
+const mongo_database = process.env.MONGO_REMOTE;
 
 mongoose.connect(
+
  `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
- // 'mongodb://localhost:27017/peoplesDB',
+ 
+  `${mongo_database}`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  }
-);
+  }, (err) => {
+    if (err) console.log(err);
+    else console.log("DB connected Successfully!");
+  });
 
 app.use(methodOverride("_method")); // method-override helps access app.delete() for log out
 app.use(passport.initialize()); // used to initialize Passport, used to use passport for salt and hashing in our code
@@ -202,8 +206,8 @@ app.get("/tutorials", function (req, res) {
 });
 
 // Teammates page rendering
-var skillarr = new Array();
-var requser = new Array();
+var skillarr = [];
+var requser = [];
 app.get("/teammates", function (req, res) {
   res.render("teammates", {
     currentUser: req.user,
@@ -215,25 +219,46 @@ app.get("/teammates", function (req, res) {
 
 //teammates posting
 app.post("/teammates", function (req, res) {
-  for (var i = 0; i < req.body.checked.length; i++) {
-    skillarr[i] = req.body.checked[i];
-  }
-
-  var j = 0;
-  for (var i = 0; i < skillarr.length; i++) {
-    User.find({ skills: { $in: [skillarr[i]] } }, function (err, requserdb) {
-      //  selects the documents where the value of a field equals any value in the specified array
-      requserdb.forEach(function (user) {
-        requser[j] = user;
-        j++;
+  skillarr = [];
+  requser = [];
+  const currUser = req.user.name;
+  if(JSON.stringify(req.body) === '{}'){
+    res.redirect("/teammates");
+  }else{
+    if(typeof(req.body.checked) === "string"){
+      skillarr[0] = req.body.checked;
+    }else{
+      for (var i = 0; i < req.body.checked.length; i++) {
+        skillarr.push(req.body.checked[i]);
+      }
+    }
+    for (var i = 0; i < skillarr.length; i++) {
+      User.find({ skills: { $in: [skillarr[i]] } }, function (err, requserdb) {
+        //  selects the documents where the value of a field equals any value in the specified array
+        // console.log(requserdb);
+        requserdb.forEach(function (user) {
+          const userId = user._id.toString();
+          const userName = user.name;
+          const disId = user.discord_id;
+          var isPresent = false;
+          for(var j=0; j<requser.length; j++){
+              const presentId = requser[j]._id.toString();
+              const presentName = requser[j].name;
+              const presentDisId = requser[j].discord_id;
+              if(userId === presentId || (userName === presentName && disId === presentDisId)){
+                isPresent = true;
+                break;
+              }
+          }
+          if(isPresent === false && currUser !== userName){
+            requser.push(user)
+          }
+        });
       });
-    });
+    }
+    res.redirect("/teammates");
   }
-  res.redirect("/teammates");
 });
-
-requser = [];
-skillarr = [];
 
 // Profile page rendering
 app.get("/profile", function (req, res) {
@@ -243,6 +268,12 @@ app.get("/profile", function (req, res) {
 // pride page rendering
 app.get("/pride", function (req, res) {
   res.render("pride", { currentUser: req.user,avatarUrl:avatarUrl });
+});
+
+app.get("/logout", function(req, res) {
+  requser = [];
+  req.logout();
+  res.redirect("/");
 });
 
 // Ports
