@@ -125,13 +125,17 @@ strong {
   }
 
   .header-girls {
-    width: 150%;
+
     padding-bottom: 0;
     position: relative;
     display: block;
     float:inline-start;
     padding-top: 0%;
     /* padding-left: 60%; */
+  }
+
+  .pt-2{
+      padding-top: 3.5rem !important;
   }
 
   @media only screen and (max-width: 990px) {
