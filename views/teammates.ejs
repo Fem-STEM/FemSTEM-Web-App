@@ -127,9 +127,12 @@
       }
 
       /* Team card hashtags */
+      .skill-tags{
+        display: flex;
+        flex-wrap: wrap;
+      }
       .card-skilltag {
-        width: 20px;
-        margin: 4% 1%;
+        margin: 1% 1%;
         padding: 7px 12px;
         color: #fff;
         border-radius: 18px;
@@ -499,11 +502,13 @@
                 </p>
 
                 <!-- Skill tags -->
-                <% user.skills.forEach(function(skill){%>
-                <span class="card-skilltag"> <%= skill %> </span>
-                <%}) %>
+                <div class="skill-tags">
+                  <% user.skills.forEach(function(skill){%>
+                  <span class="card-skilltag"> <%= skill %> </span>
+                  <%}) %>
+                </div>
 
-                <div class="icon-block" style="margin-top: 5%">
+                <div class="icon-block" style="margin-top: 3%">
                   <!-- Mail address -->
                   <a href="mailto:<%= user.username %>">
                     <i class="fas fa-envelope-open"></i
