@@ -42,7 +42,7 @@
           -ms-flex-direction: column;
           flex-direction: column;
         }
-        
+
         .tags ul {
           list-style: none;
           display: -webkit-box;
@@ -51,7 +51,7 @@
           -ms-flex-wrap: wrap;
           flex-wrap: wrap;
         }
-        
+
         .tags ul li {
           border-radius: 22px;
           border: 1px solid #1a1b38;
@@ -64,17 +64,17 @@
             background-color: rgb(168, 247, 104);
             border-radius: 20px;
         }
-        
+
         .tags ul li:first-child {
           margin-right: 10px;
           margin-top: 10px;
         }
-        
+
         .tags ul li + li {
           margin-right: 10px;
           margin-top: 10px;
         }
-        
+
         .tags ul li a {
           display: block;
           text-decoration: none;
@@ -85,7 +85,7 @@
     </style>
   </head>
 
-  
+
   <body>
 
     <!-- Navbar -->
@@ -124,10 +124,10 @@
 
             <li class="nav-item" style="background-color: #d291bc !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;">
               <% if(currentUser){ %>
-                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><i class="fas fa-user-circle" style="font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #fec8d8;"></i><%= currentUser.name %></a>
+                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><img src=<%= avatarUrl %>  style="height:36px;width:36px;border-radius:50%;font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #fec8d8;"></img><%= currentUser.name %></a>
                 <% } %>
             </li>
-           
+
               <% if(!currentUser){ %>
                 <li class="nav-item">
                 <a id="modal_btn" class="nav-link btn-get-quote text-white" href="#login">Login</a>
@@ -136,7 +136,7 @@
                 <li class="nav-item">
                 <a class="nav-link " href="/logout">Logout</a>
                 </li>
-              <% } %>      
+              <% } %>
           </ul>
         </div>
       </div>
@@ -145,14 +145,37 @@
     <!-- Dashboard -->
     <div class="container top-con" style="margin-bottom: 8%;">
       <h2>Your Profile</h2>
+
+      <div class="row" style="margin-top: 2%;">
+          <div class="col-xs-12">
+
+            <img
+              src=<%= avatarUrl %>
+              style="
+
+              height:72px;
+              width:72px;
+              border-radius:50%;
+                font-size: 36px;
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                color: #ffdfd3;
+              "
+            ></img>
+
+          </div>
+      </div>
+
       <div class="row" style="margin-top: 3%;">
         <div class="col-xs-12 col-md-6">
-          <span style="font-weight: 600; font-size: 1.2rem;">Name:</span> 
+          <span style="font-weight: 600; font-size: 1.2rem;">Name:</span>
           <span style="margin-left: 40px;"><%=currentUser.name%></span>
         </div>
 
         <div class="col-xs-12 col-md-6">
-          <span style="font-weight: 600; font-size: 1.2rem;">Email address:</span> 
+          <span style="font-weight: 600; font-size: 1.2rem;">Email address:</span>
           <span style="margin-left: 40px;"><%=currentUser.username%></span>
         </div>
       </div>
@@ -160,9 +183,9 @@
       <div class="row" style="margin-top: 2%;">
           <div class="col-xs-12">
             <% if(currentUser.discord_id){ %>
-              <span style="font-weight: 700; font-size: 1.3rem;">Discord id:</span> 
+              <span style="font-weight: 700; font-size: 1.3rem;">Discord id:</span>
               <span style="margin-left: 40px;"> <%=currentUser.discord_id%></span>
-            <% } %>   
+            <% } %>
 
           </div>
       </div>
@@ -175,7 +198,7 @@
           <% } else { %>
             <span style="font-weight: 700; font-size: 1.3rem;">Current Status:</span>
             <span style="margin-left: 40px;"> Mentee</span>
-          <% } %> 
+          <% } %>
         </div>
       </div>
 
@@ -183,26 +206,26 @@
         <div class="col-xs-12 tags" style="padding-left: 9px;">
           <% if(currentUser.skills.length > 0){ %>
             <span style="font-weight: 700; font-size: 1.3rem;">Skills:</span>
-            <ul style="padding-left: 0;"> 
+            <ul style="padding-left: 0;">
               <% currentUser.skills.forEach(function(skill){%>
                 <li>
                     <a>
-                      <%= skill %>     
+                      <%= skill %>
                     </a>
-                </li>    
-                <%}) %>     
+                </li>
+                <%}) %>
             </ul>
-  
-          <% } %> 
-          
+
+          <% } %>
+
           <!-- Skills tags -->
-       
-            
+
+
         </div>
       </div>
     </div>
 
-    
+
 
     <!-- Footer -->
     <footer>
@@ -211,7 +234,7 @@
           <div class="col-md-4 footer-left">
             <p>
               <img src="img/favicon.png" style="width: 65px;">  <span style="color: #573f70; font-weight: 600;">Made with <i class="fas fa-heart"></i> by FemSTEM</span>
-            </p>        
+            </p>
           </div>
           <div class="col-md-3 offset-md-1 footer-right">
             <a href="https://github.com/Swatilekha-Roy/Fem-STEM"><i class="fab fa-github"></i></a>
@@ -221,20 +244,20 @@
         </div>
       </div>
     </footer>
-      
+
       <!-- Scroll to top arrow -->
       <a href="javascript:" id="return-to-top"><i class="fa fa-angle-up" aria-hidden="true" style="font-size: 30px;"></i></a>
-  
+
       <!-- JQuery JS -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
-  
+
       <!-- Socket.io scripts -->
       <script src="/socket.io/socket.io.js"></script>
-      
+
       <!-- Custom scripts -->
       <script type="text/javascript" src="js/scripts.js"></script>
       <script type="text/javascript" src="js/wow.min.js"></script>
-  
+
       <!-- Bootstrap JS -->
       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
@@ -242,11 +265,11 @@
       <!-- Userway -->
     <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "E9TGLGySQm");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>
 
-  
+
       <!-- WOW script -->
       <script type="text/javascript">
         new WOW().init();
       </script>
-  
+
     </body>
   </html>

@@ -148,9 +148,12 @@
                   padding-top: 0 !important;
                   padding-bottom: 0 !important;
                 "
-                ><i
-                  class="fas fa-user-circle"
+                ><img
+                src=<%= avatarUrl %>
                   style="
+                    height:36px;
+                    width:36px;
+                    border-radius:50%;
                     font-size: 36px;
                     margin-top: 0 !important;
                     margin-bottom: 0 !important;
@@ -249,7 +252,7 @@
             <p style="color: #000 !important; font-size: 14px">
               <%=comment.text%>
             </p>
-            <!-- 
+            <!--
                   Adding answered status to answers, a WIP
                   <form method="post" action="/help/<%= group._id %>" class="sweet-form">
                   <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name="Answerstat" style="display: none;" value="av" />

@@ -119,7 +119,7 @@
 
             <li class="nav-item" style="background-color: #d291bc !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;">
               <% if(currentUser){ %>
-                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><i class="fas fa-user-circle" style="font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #FFDFD3;"></i><%= currentUser.name %></a>
+                <a class="nav-link" aria-current="page" href="/profile" style="margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important;"><img src=<%=avatarUrl %> style="height:36px;width:36px;border-radius:50%;font-size: 36px; margin-top: 0 !important; margin-bottom: 0 !important; padding-top: 0 !important; padding-bottom: 0 !important; color: #FFDFD3;"></i><%= currentUser.name %></a>
                 <% } %>
             </li>
 
@@ -176,7 +176,11 @@
                 <p>My experience as a female hacker in a male dominant field has been empowering.
                   Starting off, I was uncertain about my capabilities and was easily intimidated by people who were older and more experienced than me. When I won my first hackathon, I was in disbelief...
 
+                  <button class="btn btn-primary story-btn" onclick="showFullStory()" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
+
                   <button id="0" class="btn btn-primary story-btn" onclick="showFullStory(this.id)" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
 
                     <p class="story-hid" style="display: none;">
                       as I thought it was practically chance and I happened to be very lucky.
@@ -201,7 +205,11 @@
                 <p>I am super lucky to have found my female hacking squad and to have met so many amazing and empowered female and non-binary hackers on the way.
                   I still remember my first hackathon from a few months back where my teammates and I...
 
+
+                  <button class="btn btn-primary story-btn" onclick="showFullStory()" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
                   <button id="1" class="btn btn-primary story-btn" onclick="showFullStory(this.id)" style="margin-top: 5% !important; float: right !important;">Read More</button>
+
 
                   <p class="story-hid" style="display: none;"> stayed up all night working on our mental health hack, at Athena Hacks, each of us supporting and learning so much from each other on the way.
                   It was an incredible experience and the best cherry on the cake was that my teammates Chehak, Nandini, Soumi and I ended up winning a Microsoft sponsored category at the end of the night.
