@@ -199,6 +199,22 @@ app.post("/grouppage", function (req, res) {
   is_answered = req.body.Answerstat;
   // console.log(is_answered);
 });
+//Displaying search result on searchresult.ejs page
+app.post("/searchres",(req,res)=>
+{ 
+  Post.find({$text:{$search:req.body.searchString}},(err,foundres)=>
+  {   
+    if(err)
+    {
+      console.log(err);
+     
+    }
+    else
+    {
+    res.render("searchresult",{foundpost:foundres});
+    }
+  }); 
+});
 
 // Tutorials page rendering
 app.get("/tutorials", function (req, res) {
