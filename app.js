@@ -37,7 +37,7 @@ const mongo_database = process.env.MONGO_REMOTE;
 mongoose.connect(
 
  `mongodb+srv://${mongo_username}:${mongo_password}@cluster0.ca1bc.mongodb.net/UserDB`,
- 
+
   `${mongo_database}`,
   {
     useNewUrlParser: true,
